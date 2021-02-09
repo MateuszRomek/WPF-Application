@@ -23,6 +23,7 @@ namespace WPFProjekt.Views
         public ListView()
         {
             InitializeComponent();
+            
         }
     }
 }

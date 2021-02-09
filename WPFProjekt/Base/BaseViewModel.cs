@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace WPFProjekt.ViewModels
 {
-  
-    public  class BaseViewModel : INotifyPropertyChanged
+
+    /// <summary>
+    ///    BaseViewModel from which other ViewModels will inherit
+    /// </summary>
+    public class BaseViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        ///    Method that will update view model
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
     }
 }
