@@ -5,8 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFProjekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="#3f51b5" BorderThickness="0">
+                            <ContentPresenter x:Name="cp" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.Foreground="White"></ContentPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#757de8"></Setter>
+                                <Setter TargetName="cp" Property="TextBlock.Foreground" Value="White"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#757de8"></Setter>
+                                <Setter TargetName="cp" Property="TextBlock.Foreground" Value="White"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Background="#e8eaf6" Grid.Row="0" Orientation="Horizontal" >
+            
+            <Button  Margin="10" Width="100"  Content="Movies List" Command="{Binding UpdateViewCommand}" CommandParameter="List"/>
+            <Button Margin="10" Width="100" Content="Add Movie" Command="{Binding UpdateViewCommand}" CommandParameter=""/>
+            <Button Margin="10" Width="100" Content="Edit Movie" Command="{Binding UpdateViewCommand}" CommandParameter="EditList"/>
+        </StackPanel>
+
+        <Frame NavigationUIVisibility="Hidden" Grid.Row="1" Content="{Binding SelectedViewModel, Mode=TwoWay}" />
     </Grid>
 </Window>
