@@ -216,9 +216,14 @@
     <Compile Include="DB\Models\MovieRating.cs" />
     <Compile Include="DB\Models\Platform.cs" />
     <Compile Include="DB\Models\Rating.cs" />
+    <Compile Include="DB\Models\Wishlist.cs" />
     <Compile Include="Migrations\20210210203842_InitialCreate.cs" />
     <Compile Include="Migrations\20210210203842_InitialCreate.designer.cs">
       <DependentUpon>20210210203842_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210210210450_AddWishlist.cs" />
+    <Compile Include="Migrations\20210210210450_AddWishlist.designer.cs">
+      <DependentUpon>20210210210450_AddWishlist.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MovieCatalogContextModelSnapshot.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />

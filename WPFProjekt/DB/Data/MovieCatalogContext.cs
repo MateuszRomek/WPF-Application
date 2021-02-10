@@ -18,6 +18,7 @@ namespace WPFProjekt.DB.Data
         public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<MovieRating> MovieRatings { get; set; }
         public DbSet<MoviePlatform> MoviePlatforms { get; set; }
+        public DbSet<Wishlist> Wishlist { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
