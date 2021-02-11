@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WPFProject.Base;
 
 namespace WPFProject.ViewModels
 {
-    class EditListView
+    public class EditListViewModel : BaseViewModel
     {
     }
 }

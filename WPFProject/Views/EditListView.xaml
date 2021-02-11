@@ -9,6 +9,6 @@
       Title="EditListView">
 
     <Grid>
-        
+        <TextBlock Width="Auto" Height="Auto" Background="Wheat" FontSize="40">Edit</TextBlock>
     </Grid>
 </Page>

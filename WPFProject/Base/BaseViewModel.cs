@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -9,8 +10,11 @@ namespace WPFProject.Base
     ///    BaseViewModel from which other ViewModels will inherit
     /// </summary>
     /// 
+  
     public class BaseViewModel : INotifyPropertyChanged
     {
+
+
         /// <summary>
         ///    Method that will update view model
         /// </summary>

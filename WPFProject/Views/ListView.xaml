@@ -9,6 +9,6 @@
       Title="ListView">
 
     <Grid>
-        
+        <TextBlock Width="Auto" Height="Auto" Background="Wheat" FontSize="40">List</TextBlock>
     </Grid>
 </Page>

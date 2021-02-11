@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IM192EIp0fGD+mSEU5E90MNvlics4Zi7Cm0xF06IzEi23MTNoHQ1ZF3fL16ftiToprycDZU/zMEcgBqf0sRDWQ==",
+  "dgSpecHash": "hxAtBOSSci0JAipkPKxtnlQeQS1SEEm5fae8b4jwlyKoIbPHnasK/vzdaj9hvwpcDB+g861Q5Jees84NJBbLdA==",
   "success": true,
   "projectFilePath": "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProjekt\\WPFProject\\WPFProject.csproj",
   "expectedPackageFiles": [
@@ -37,6 +37,7 @@
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\propertychanged.fody\\3.3.1\\propertychanged.fody.3.3.1.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
