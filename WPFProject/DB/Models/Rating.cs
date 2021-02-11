@@ -12,5 +12,8 @@ namespace WPFProject.DB.Models
 
         [Required]
         public int RatingValue { get; set; }
+
+        [Required]
+        public string RatingName { get; set; }
     }
 }

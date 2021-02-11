@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows.Input;
 using WPFProject.Base;
@@ -11,7 +12,13 @@ namespace WPFProject.ViewModels
     {
         public ICommand SubmitCommand { get; set; }
 
-        public string MovieName { get; set; } = "Test";
+        public string MovieName { get; set; }
+
+        public string UserRating { get; set; }
+
+        public string MoviePlatform { get; set; }
+
+        public string MovieGenre { get; set; }
 
         public AddListViewModel()
         {
@@ -20,7 +27,13 @@ namespace WPFProject.ViewModels
 
         private void Submit()
         {
-            Console.WriteLine(MovieName);
+          
+
+            Trace.WriteLine(MovieGenre);
+            Trace.WriteLine(UserRating);
+            Trace.WriteLine(MoviePlatform);
+            Trace.WriteLine(MovieName);
+          //CREATE Obj in db
         }
     }
 }

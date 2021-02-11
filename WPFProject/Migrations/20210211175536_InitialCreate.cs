@@ -166,6 +166,9 @@ namespace WPFProject.Migrations
                 name: "IX_MovieRatings_RatingId",
                 table: "MovieRatings",
                 column: "RatingId");
+
+            
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

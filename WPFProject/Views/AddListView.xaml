@@ -15,13 +15,14 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0"  Height="55" Content="Dodaj Nowy Film" FontSize="24" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" RenderTransformOrigin="0.5,0.656" Margin="0,80,0,0">
             <Grid.RowDefinitions >
                 <RowDefinition Height="45" />
                 <RowDefinition Height="45" />
                 <RowDefinition Height="45" />
                 <RowDefinition Height="45" />
-                <RowDefinition Height="45" />
+                <RowDefinition Height="71" />
+                <RowDefinition Height="29" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300" />
@@ -29,18 +30,37 @@
                 <ColumnDefinition Width="300" />
                 <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
-            
+
             <Label Grid.Row="0" Grid.Column="1" Margin="0,10,10,0"  Content="Nazwa Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <TextBox Grid.Column="2" Text="{Binding MovieName}" Name="movieName" Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
             <Label Grid.Row="1" Grid.Column="1" Margin="0,10,10,0"  Content="Gatunek Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <TextBox Grid.Row="1" Grid.Column="2" Name="movieGenre" Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <ComboBox Grid.Row="1" Grid.Column="2" FontSize="14"  Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MovieGenre}" SelectedValuePath="Content" >
+                <ComboBoxItem  FontSize="14" IsSelected="True">Komedia</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Akcja</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Science fiction</ComboBoxItem>
+                <ComboBoxItem  FontSize="14">Horror</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Romans</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Dramat</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Thriller</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Kryminał</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Inne</ComboBoxItem>
+            </ComboBox>
+
 
             <Label Grid.Row="2" Grid.Column="1" Margin="0,10,10,0"  Content="Platformy VOD" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <TextBox Grid.Row="2" Grid.Column="2" Name="moviePlatform" Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <ComboBox FontSize="14" Grid.Row="2" Grid.Column="2" Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MoviePlatform}" SelectedValuePath="Content" >
+                <ComboBoxItem  FontSize="14" IsSelected="True">Netflix</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >HBO</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Disney+</ComboBoxItem>
+                <ComboBoxItem  FontSize="14">Canal+</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >CDA</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Player</ComboBoxItem>
+                <ComboBoxItem  FontSize="14" >Inne</ComboBoxItem>
+            </ComboBox>
 
             <Label Grid.Row="3" Grid.Column="1" Margin="0,10,10,0"  Content="Ocena Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <ComboBox FontSize="14" Grid.Row="3" Grid.Column="2" Margin="0,10,10,0" >
+            <ComboBox FontSize="14" Grid.Row="3" Grid.Column="2" Width="auto" Margin="0,10,0,0" SelectedValue="{Binding UserRating}" SelectedValuePath="Content" >
                 <ComboBoxItem  FontSize="14" >1 - Nieporozumienie</ComboBoxItem>
                 <ComboBoxItem  FontSize="14" >2 - Ujdzie</ComboBoxItem>
                 <ComboBoxItem  FontSize="14" IsSelected="True" >3 - Średni</ComboBoxItem>
@@ -48,11 +68,9 @@
                 <ComboBoxItem  FontSize="14" >5 - Świetny</ComboBoxItem>
             </ComboBox>
 
-            <Button Grid.Row="3" Content="Dodaj"  FontSize="16" Command="{Binding SubmitCommand }"/>
+            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" Content="Dodaj"  FontSize="16" Command="{Binding SubmitCommand }"/>
         </Grid>
-        
+
     </Grid>
-
-
 
 </Page>
