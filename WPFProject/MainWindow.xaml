@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Movie Catalog" 
+        Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
 
 
     <Window.Resources>
@@ -41,7 +44,7 @@
         <StackPanel Background="#e8eaf6" Grid.Row="0" Orientation="Horizontal" >
 
             <Button  Margin="10" Width="100"  Content="Movies List" Command="{Binding UpdateViewCommand}" CommandParameter="List"/>
-            <Button Margin="10" Width="100" Content="Add Movie" Command="{Binding UpdateViewCommand}" CommandParameter=""/>
+            <Button Margin="10" Width="100" Content="Add Movie" Command="{Binding UpdateViewCommand}" CommandParameter="AddList"/>
             <Button Margin="10" Width="100" Content="Edit Movie" Command="{Binding UpdateViewCommand}" CommandParameter="EditList"/>
         </StackPanel>
 

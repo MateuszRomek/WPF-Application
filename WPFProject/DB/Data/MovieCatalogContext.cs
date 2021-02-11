@@ -3,7 +3,7 @@ using WPFProject.DB.Models;
 
 namespace WPFProject.DB.Data
 {
-    public class MovieCatalogContext :DbContext
+    public class MovieCatalogContext : DbContext
     {
 
         public DbSet<Movie> Movies { get; set; }
@@ -13,7 +13,7 @@ namespace WPFProject.DB.Data
         public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<MovieRating> MovieRatings { get; set; }
         public DbSet<MoviePlatform> MoviePlatforms { get; set; }
-   
+        public DbSet<Wishlist> Wishlist { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -14,5 +14,11 @@
         <DataTemplate DataType="{x:Type viewmodels:EditListViewModel}">
             <views:EditListView/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:AddListViewModel}">
+            <views:AddListView/>
+        </DataTemplate>
+
+
     </Application.Resources>
 </Application>

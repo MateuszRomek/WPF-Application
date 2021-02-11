@@ -46,6 +46,9 @@ namespace WPFProject.Commands
             else if (parameter.ToString() == "EditList")
             {
                 viewModel.SelectedViewModel = new EditListViewModel();
+            } else if (parameter.ToString() == "AddList")
+            {
+                viewModel.SelectedViewModel = new AddListViewModel();
             }
 
         }
