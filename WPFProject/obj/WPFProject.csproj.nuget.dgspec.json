@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProject\\WPFProject\\WPFProject.csproj": {}
+    "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProjekt\\WPFProject\\WPFProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProject\\WPFProject\\WPFProject.csproj": {
+    "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProjekt\\WPFProject\\WPFProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProject\\WPFProject\\WPFProject.csproj",
+        "projectUniqueName": "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProjekt\\WPFProject\\WPFProject.csproj",
         "projectName": "WPFProject",
-        "projectPath": "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProject\\WPFProject\\WPFProject.csproj",
+        "projectPath": "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProjekt\\WPFProject\\WPFProject.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProject\\WPFProject\\obj\\",
+        "outputPath": "C:\\Users\\mateu\\Desktop\\code\\wsei\\WPFProjekt\\WPFProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,38 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

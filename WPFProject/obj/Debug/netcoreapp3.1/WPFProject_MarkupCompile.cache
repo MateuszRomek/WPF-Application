@@ -1,20 +1,20 @@
 ﻿WPFProject
-1.0.0.0
+
 
 winexe
 C#
 .cs
 C:\Users\mateu\Desktop\code\wsei\WPFProjekt\WPFProject\obj\Debug\netcoreapp3.1\
-WPFProject
+WPFProject_sff1rgtm_wpftmp
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\mateu\Desktop\code\wsei\WPFProjekt\WPFProject\App.xaml
-31359051803
+11151548125
 
-11-596621033
-216399095646
-MainWindow.xaml;Views\EditListView.xaml;Views\ListView.xaml;
+51281060955
+2131614251502
+MainWindow.xaml;
 
-False
+True
 

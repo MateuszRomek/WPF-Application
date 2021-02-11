@@ -2,8 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WPFProject"
+             xmlns:views="clr-namespace:WPFProjekt.Views"
+             xmlns:viewmodels="clr-namespace:WPFProjekt.ViewModels"
              StartupUri="MainWindow.xaml">
+    
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type viewmodels:ListViewModel}">
+            <views:ListView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:EditViewModel}">
+            <views:EditListView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
