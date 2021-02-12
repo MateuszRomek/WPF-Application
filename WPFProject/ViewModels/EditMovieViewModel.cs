@@ -5,7 +5,7 @@ using WPFProject.Base;
 
 namespace WPFProject.ViewModels
 {
-    public class EditListViewModel : BaseViewModel
+    public class EditMovieViewModel : BaseViewModel
     {
     }
 }

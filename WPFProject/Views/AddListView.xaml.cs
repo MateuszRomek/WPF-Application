@@ -22,7 +22,7 @@ namespace WPFProject.Views
         public AddListView()
         {
             InitializeComponent();
-            DataContext = new AddListViewModel();
+            DataContext = new AddMovieViewModel();
         }  
     }
 }

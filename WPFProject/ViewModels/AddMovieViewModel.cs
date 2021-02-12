@@ -14,7 +14,7 @@ using WPFProject.DB.Models;
 
 namespace WPFProject.ViewModels
 {
-    public class AddListViewModel : BaseViewModel, IDataErrorInfo
+    public class AddMovieViewModel : BaseViewModel, IDataErrorInfo
     {
         public ICommand SubmitCommand { get; set; }
         public ICommand LoadFormData { get; set; }
@@ -58,7 +58,7 @@ namespace WPFProject.ViewModels
             }
         }
 
-        public AddListViewModel()
+        public AddMovieViewModel()
         {
             this.SubmitCommand = new RelayCommand(Submit);
             this.LoadFormData = new RelayCommand(LoadDataAsync);

@@ -11,11 +11,11 @@
             <views:ListView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewmodels:EditListViewModel}">
+        <DataTemplate DataType="{x:Type viewmodels:EditMovieViewModel}">
             <views:EditListView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type viewmodels:AddListViewModel}">
+        <DataTemplate DataType="{x:Type viewmodels:AddMovieViewModel}">
             <views:AddListView/>
         </DataTemplate>
 
