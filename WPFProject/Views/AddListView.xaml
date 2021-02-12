@@ -5,16 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
       Height="800" Width="1200"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:i1="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       Title="AddListView">
     <Grid Background="#FFFF">
         <Grid.RowDefinitions >
             <RowDefinition Height="55" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0"  Height="55" Content="Dodaj Nowy Film" FontSize="24" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
+        <DataGrid>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding LoadFormData}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
+        
+        <Label Grid.Row="0"  Height="55" Content="Dodaj Nowy Film" FontSize="24" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+    
         <Grid Grid.Row="1" RenderTransformOrigin="0.5,0.656" Margin="0,80,0,0">
             <Grid.RowDefinitions >
                 <RowDefinition Height="45" />
@@ -32,43 +40,34 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="1" Margin="0,10,10,0"  Content="Nazwa Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <TextBox Grid.Column="2" Text="{Binding MovieName}" Name="movieName" Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBox Grid.Column="2"  
+                     Name="movieName" 
+                     Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                  Text="{Binding MovieName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
+                     >
+            </TextBox>
 
             <Label Grid.Row="1" Grid.Column="1" Margin="0,10,10,0"  Content="Gatunek Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <ComboBox Grid.Row="1" Grid.Column="2" FontSize="14"  Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MovieGenre}" SelectedValuePath="Content" >
-                <ComboBoxItem  FontSize="14" IsSelected="True">Komedia</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Akcja</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Science fiction</ComboBoxItem>
-                <ComboBoxItem  FontSize="14">Horror</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Romans</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Dramat</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Thriller</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Kryminał</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Inne</ComboBoxItem>
+            <ComboBox SelectedIndex="0"  ItemsSource="{Binding GenresList}" Grid.Row="1" Grid.Column="2" FontSize="14"  Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MovieGenre}" SelectedValuePath="Id"  DisplayMemberPath="GenreName">
+
             </ComboBox>
 
 
             <Label Grid.Row="2" Grid.Column="1" Margin="0,10,10,0"  Content="Platformy VOD" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <ComboBox FontSize="14" Grid.Row="2" Grid.Column="2" Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MoviePlatform}" SelectedValuePath="Content" >
-                <ComboBoxItem  FontSize="14" IsSelected="True">Netflix</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >HBO</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Disney+</ComboBoxItem>
-                <ComboBoxItem  FontSize="14">Canal+</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >CDA</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Player</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >Inne</ComboBoxItem>
+            <ComboBox SelectedIndex="0" ItemsSource="{Binding PlatformsList}" FontSize="14" Grid.Row="2" Grid.Column="2" Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MoviePlatform}" SelectedValuePath="Id"  DisplayMemberPath="PlatformName">
+               
             </ComboBox>
 
             <Label Grid.Row="3" Grid.Column="1" Margin="0,10,10,0"  Content="Ocena Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-            <ComboBox FontSize="14" Grid.Row="3" Grid.Column="2" Width="auto" Margin="0,10,0,0" SelectedValue="{Binding UserRating}" SelectedValuePath="Content" >
-                <ComboBoxItem  FontSize="14" >1 - Nieporozumienie</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >2 - Ujdzie</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" IsSelected="True" >3 - Średni</ComboBoxItem>
-                <ComboBoxItem  FontSize="14">4 - Dobry</ComboBoxItem>
-                <ComboBoxItem  FontSize="14" >5 - Świetny</ComboBoxItem>
+            <ComboBox SelectedIndex="3" FontSize="14" Grid.Row="3" Grid.Column="2" Width="auto" Margin="0,10,0,0" SelectedValue="{Binding UserRating}" ItemsSource="{Binding RatingList}" SelectedValuePath="Id" DisplayMemberPath="RatingName" >
             </ComboBox>
 
-            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" Content="Dodaj"  FontSize="16" Command="{Binding SubmitCommand }"/>
+            <Button
+                VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   
+                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" Content="Dodaj" 
+                FontSize="16" Command="{Binding SubmitCommand }"
+                IsEnabled="{Binding IsEnabled}"
+                />
         </Grid>
 
     </Grid>

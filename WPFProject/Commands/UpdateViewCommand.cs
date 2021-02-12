@@ -43,10 +43,10 @@ namespace WPFProject.Commands
             {
                 viewModel.SelectedViewModel = new ListViewModel();
             }
-            else if (parameter.ToString() == "EditList")
+            else if (parameter.ToString() == "EditMovie")
             {
                 viewModel.SelectedViewModel = new EditListViewModel();
-            } else if (parameter.ToString() == "AddList")
+            } else if (parameter.ToString() == "AddMovie")
             {
                 viewModel.SelectedViewModel = new AddListViewModel();
             }

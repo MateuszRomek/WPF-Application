@@ -23,6 +23,6 @@ namespace WPFProject.Views
         {
             InitializeComponent();
             DataContext = new AddListViewModel();
-        }
+        }  
     }
 }

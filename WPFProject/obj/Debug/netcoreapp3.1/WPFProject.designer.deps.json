@@ -6,6 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Expression.Blend.Sdk/1.0.2": {
+        "runtime": {
+          "lib/net45/System.Windows.Interactivity.dll": {
+            "assemblyVersion": "4.5.0.0",
+            "fileVersion": "3.0.40218.0"
+          }
+        }
+      },
       "Fody/6.3.0": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
@@ -1400,6 +1408,13 @@
     }
   },
   "libraries": {
+    "Expression.Blend.Sdk/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2rOHxr7HsJ4gVc75JymaFDS80VvhT/1rpm50LHUKRmsykE1cdM4n2rmcntcTSG08/S1ZedLuSWQpb3yBY3xfUQ==",
+      "path": "expression.blend.sdk/1.0.2",
+      "hashPath": "expression.blend.sdk.1.0.2.nupkg.sha512"
+    },
     "Fody/6.3.0": {
       "type": "package",
       "serviceable": true,
