@@ -17,7 +17,7 @@ namespace WPFProject.ViewModels
     {
         public ICommand SubmitCommand { get; set; }
         public ICommand LoadFormData { get; set; }
-
+        public string Description { get; set; }
         public string MovieName { get; set; }
 
         public int UserRating { get; set; }
@@ -38,13 +38,16 @@ namespace WPFProject.ViewModels
         {
             get
             {
-                if ("MovieName" == columnName && String.IsNullOrEmpty(MovieName))
+                if ("Description" == columnName && String.IsNullOrEmpty(Description) ||  "MovieName" == columnName && String.IsNullOrEmpty(MovieName))
                 {
                         IsEnabled = false;
                         return "Enter Movie Name";   
                 } else
                 {
-                    IsEnabled = true;
+                    if(!String.IsNullOrEmpty(Description) && !String.IsNullOrEmpty(MovieName))
+                    {
+                        IsEnabled = true;
+                    }
                     return "";
                 }
             }
@@ -74,6 +77,7 @@ namespace WPFProject.ViewModels
             Trace.WriteLine(MovieName);
       
             //CREATE Obj in db
+
 
 
         }

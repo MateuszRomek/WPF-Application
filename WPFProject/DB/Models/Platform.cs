@@ -12,5 +12,7 @@ namespace WPFProject.DB.Models
 
         [Required]
         public string PlatformName { get; set; }
+
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

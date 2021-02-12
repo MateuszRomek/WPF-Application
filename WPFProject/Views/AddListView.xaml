@@ -30,7 +30,7 @@
                 <RowDefinition Height="45" />
                 <RowDefinition Height="45" />
                 <RowDefinition Height="71" />
-                <RowDefinition Height="29" />
+                <RowDefinition Height="80" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="300" />
@@ -62,9 +62,19 @@
             <ComboBox SelectedIndex="3" FontSize="14" Grid.Row="3" Grid.Column="2" Width="auto" Margin="0,10,0,0" SelectedValue="{Binding UserRating}" ItemsSource="{Binding RatingList}" SelectedValuePath="Id" DisplayMemberPath="RatingName" >
             </ComboBox>
 
+            <Label Grid.Row="4" Grid.Column="1" Margin="0,10,10,0"  Content="Krótki Opis" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBox Grid.Row="4" Grid.Column="2"  
+                     Name="Description" 
+                     Margin="0,10,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" 
+                     Padding="10"
+                    TextWrapping="Wrap"
+                  Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
+                     >
+            </TextBox>
+
             <Button
                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   
-                Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" Content="Dodaj" 
+                Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" Content="Dodaj" 
                 FontSize="16" Command="{Binding SubmitCommand }"
                 IsEnabled="{Binding IsEnabled}"
                 />

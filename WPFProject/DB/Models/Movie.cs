@@ -11,8 +11,8 @@ namespace WPFProject.DB.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
-        public ICollection<MovieGenre> MovieGenres { get; set; }
-        public ICollection<MoviePlatform> MoviePlatforms { get; set; }
-        public ICollection<MovieRating> MvieRatings { get; set; }
+        public ICollection<Genre> Genres { get; set; }
+        public ICollection<Platform> Platforms { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
     }
 }
