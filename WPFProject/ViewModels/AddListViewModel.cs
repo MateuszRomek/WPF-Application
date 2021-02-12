@@ -10,6 +10,7 @@ using System.Windows.Input;
 using WPFProject.Base;
 using WPFProject.Commands;
 using WPFProject.DB.Data;
+using WPFProject.DB.Models;
 
 namespace WPFProject.ViewModels
 {
@@ -19,9 +20,8 @@ namespace WPFProject.ViewModels
         public ICommand LoadFormData { get; set; }
         public string Description { get; set; }
         public string MovieName { get; set; }
-
         public int UserRating { get; set; }
-
+        public int User { get; set; }
         public int MoviePlatform { get; set; }
         public bool IsEnabled { get; set; }
         public int MovieGenre { get; set; }
@@ -32,7 +32,12 @@ namespace WPFProject.ViewModels
         public List<DB.Models.Genre> GenresList { get; set; }
         public List<DB.Models.Platform> PlatformsList { get; set; }
 
-        public string Error => throw new NotImplementedException();
+        public List<DB.Models.User> AvaliableUsers { get; set; }
+
+        public string Error
+        {
+            get { return string.Empty; }
+        }
 
         public string this[string columnName] 
         {
@@ -71,13 +76,74 @@ namespace WPFProject.ViewModels
         {
           
 
-            Trace.WriteLine(MovieGenre);
-            Trace.WriteLine(UserRating);
-            Trace.WriteLine(MoviePlatform);
-            Trace.WriteLine(MovieName);
-      
+            //Trace.WriteLine(MovieGenre);
+            //Trace.WriteLine(UserRating);
+            //Trace.WriteLine(MoviePlatform);
+            //Trace.WriteLine(MovieName);
+            //Trace.WriteLine(User);
             //CREATE Obj in db
 
+           
+
+            try
+            {
+
+                using (MovieCatalogContext context = new MovieCatalogContext())
+                {
+
+                    var genre = context.Genres
+                        .Where(g => g.Id == MovieGenre)
+                        .FirstOrDefault();
+
+                    var user = context.Users
+                        .Where(u => u.Id == User)
+                        .FirstOrDefault();
+
+
+                    var platform = context.Platforms
+                        .Where(g => g.Id == MoviePlatform)
+                        .FirstOrDefault();
+
+                    var rating = context.Ratings
+                         .Where(r => r.Id == UserRating)
+                         .FirstOrDefault();
+
+
+                    Trace.WriteLine($"{MovieGenre}, MovieGenre");
+                    Trace.WriteLine($"{genre.GenreName}, MovieGenre");
+                    Trace.WriteLine($"{User}, User");
+                    Trace.WriteLine($"{user.UserName}, User");
+                    Trace.WriteLine($"{MoviePlatform}, Platform");
+                    Trace.WriteLine($"{platform.PlatformName}, Platform");
+                    Trace.WriteLine($"{UserRating}, Rating");
+                    Trace.WriteLine($"{rating.RatingName}, Rating");
+
+
+                    Movie movie = new Movie()
+                    {
+                        Description = Description,
+                        Title = MovieName,
+                        Genre = genre,
+                        Platform = platform,
+                        Rating = rating
+                    };
+
+                    if (movie.Users == null)
+                    {
+                        movie.Users = new List<User>();
+                    }
+
+                    movie.Users.Add(user);
+
+                    context.Movies.Add(movie);
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ArgumentException();
+            }
 
 
         }
@@ -85,11 +151,13 @@ namespace WPFProject.ViewModels
         private  void LoadDataAsync()
         {
             using MovieCatalogContext context = new MovieCatalogContext();
-            var g  =  context.Genres.ToList();
-            var p  =  context.Platforms.ToList();
-
-            GenresList = g;
-            PlatformsList = p;
+            var genres  =  context.Genres.ToList();
+            var platforms  =  context.Platforms.ToList();
+            var users = context.Users.ToList();
+            
+            AvaliableUsers = users;
+            GenresList = genres;
+            PlatformsList = platforms;
           
         }
 

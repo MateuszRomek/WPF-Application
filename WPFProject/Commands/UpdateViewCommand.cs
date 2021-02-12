@@ -38,7 +38,7 @@ namespace WPFProject.Commands
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            Console.WriteLine("XD");
+
             if (parameter.ToString() == "List")
             {
                 viewModel.SelectedViewModel = new ListViewModel();

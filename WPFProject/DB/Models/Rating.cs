@@ -16,6 +16,5 @@ namespace WPFProject.DB.Models
         [Required]
         public string RatingName { get; set; }
 
-        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

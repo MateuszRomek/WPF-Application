@@ -5,13 +5,14 @@ using System.Text;
 
 namespace WPFProject.DB.Models
 {
-    public class Platform
+    public class User
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        public string PlatformName { get; set; }
+        public string UserName { get; set; }
 
+        public ICollection<Movie> Movies { get; set; }
     }
 }

@@ -13,7 +13,6 @@ namespace WPFProject.DB.Models
         [Required]
         public string GenreName { get; set; }
 
-        public virtual ICollection<Movie> Movies { get; set; }
 
     }
 }

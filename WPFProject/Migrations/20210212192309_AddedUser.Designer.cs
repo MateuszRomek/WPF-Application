@@ -3,21 +3,68 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WPFProject.DB.Data;
 
 namespace WPFProject.Migrations
 {
     [DbContext(typeof(MovieCatalogContext))]
-    partial class MovieCatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20210212192309_AddedUser")]
+    partial class AddedUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.3")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("GenreMovie", b =>
+                {
+                    b.Property<int>("GenresId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MoviesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("GenresId", "MoviesId");
+
+                    b.HasIndex("MoviesId");
+
+                    b.ToTable("GenreMovie");
+                });
+
+            modelBuilder.Entity("MoviePlatform", b =>
+                {
+                    b.Property<int>("MoviesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlatformsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MoviesId", "PlatformsId");
+
+                    b.HasIndex("PlatformsId");
+
+                    b.ToTable("MoviePlatform");
+                });
+
+            modelBuilder.Entity("MovieRating", b =>
+                {
+                    b.Property<int>("MoviesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RatingsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MoviesId", "RatingsId");
+
+                    b.HasIndex("RatingsId");
+
+                    b.ToTable("MovieRating");
+                });
 
             modelBuilder.Entity("MovieUser", b =>
                 {
@@ -107,25 +154,10 @@ namespace WPFProject.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GenreId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PlatformId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RatingId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("GenreId");
-
-                    b.HasIndex("PlatformId");
-
-                    b.HasIndex("RatingId");
 
                     b.ToTable("Movies");
                 });
@@ -274,6 +306,51 @@ namespace WPFProject.Migrations
                     b.ToTable("Wishlist");
                 });
 
+            modelBuilder.Entity("GenreMovie", b =>
+                {
+                    b.HasOne("WPFProject.DB.Models.Genre", null)
+                        .WithMany()
+                        .HasForeignKey("GenresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WPFProject.DB.Models.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MoviePlatform", b =>
+                {
+                    b.HasOne("WPFProject.DB.Models.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WPFProject.DB.Models.Platform", null)
+                        .WithMany()
+                        .HasForeignKey("PlatformsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MovieRating", b =>
+                {
+                    b.HasOne("WPFProject.DB.Models.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WPFProject.DB.Models.Rating", null)
+                        .WithMany()
+                        .HasForeignKey("RatingsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MovieUser", b =>
                 {
                     b.HasOne("WPFProject.DB.Models.Movie", null)
@@ -287,27 +364,6 @@ namespace WPFProject.Migrations
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("WPFProject.DB.Models.Movie", b =>
-                {
-                    b.HasOne("WPFProject.DB.Models.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId");
-
-                    b.HasOne("WPFProject.DB.Models.Platform", "Platform")
-                        .WithMany()
-                        .HasForeignKey("PlatformId");
-
-                    b.HasOne("WPFProject.DB.Models.Rating", "Rating")
-                        .WithMany()
-                        .HasForeignKey("RatingId");
-
-                    b.Navigation("Genre");
-
-                    b.Navigation("Platform");
-
-                    b.Navigation("Rating");
                 });
 
             modelBuilder.Entity("WPFProject.DB.Models.Wishlist", b =>

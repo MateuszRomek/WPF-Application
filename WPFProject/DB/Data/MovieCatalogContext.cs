@@ -10,9 +10,7 @@ namespace WPFProject.DB.Data
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Platform> Platforms { get; set; }
-       // public DbSet<MovieGenre> MovieGenres { get; set; }
-       // public DbSet<MovieRating> MovieRatings { get; set; }
-       // public DbSet<MoviePlatform> MoviePlatforms { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Wishlist> Wishlist { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,6 +21,8 @@ namespace WPFProject.DB.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().HasData(new User { Id = 1, UserName = "Anonim" });
+
             modelBuilder.Entity<Platform>().HasData(new Platform { Id = 1, PlatformName = "Netflix" });
             modelBuilder.Entity<Platform>().HasData(new Platform { Id = 2, PlatformName = "HBO" });
             modelBuilder.Entity<Platform>().HasData(new Platform { Id = 3, PlatformName = "Disney+" });
