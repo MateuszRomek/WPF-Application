@@ -92,8 +92,9 @@
             </ComboBox>
 
             <Button
+                Content="{Binding ButtonContent}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   
-                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" Content="Dodaj" 
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" 
                 FontSize="16" Command="{Binding SubmitCommand }"
                 IsEnabled="{Binding IsEnabled}"
                 />

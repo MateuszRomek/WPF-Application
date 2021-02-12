@@ -1,11 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
 using WPFProject.Base;
 using WPFProject.Commands;
@@ -26,6 +23,7 @@ namespace WPFProject.ViewModels
         public bool IsEnabled { get; set; }
         public int MovieGenre { get; set; }
 
+        public string ButtonContent { get; set; } = "Dodaj";
 
         public ObservableCollection<RatingElement> RatingList { get;set; }
 
@@ -60,6 +58,7 @@ namespace WPFProject.ViewModels
 
         public AddMovieViewModel()
         {
+            this.ButtonContent = "Dodaj";
             this.SubmitCommand = new RelayCommand(Submit);
             this.LoadFormData = new RelayCommand(LoadDataAsync);
             this.RatingList = new ObservableCollection<RatingElement>()
@@ -75,16 +74,6 @@ namespace WPFProject.ViewModels
         private void Submit()
         {
           
-
-            //Trace.WriteLine(MovieGenre);
-            //Trace.WriteLine(UserRating);
-            //Trace.WriteLine(MoviePlatform);
-            //Trace.WriteLine(MovieName);
-            //Trace.WriteLine(User);
-            //CREATE Obj in db
-
-           
-
             try
             {
 
@@ -108,17 +97,6 @@ namespace WPFProject.ViewModels
                          .Where(r => r.Id == UserRating)
                          .FirstOrDefault();
 
-
-                    Trace.WriteLine($"{MovieGenre}, MovieGenre");
-                    Trace.WriteLine($"{genre.GenreName}, MovieGenre");
-                    Trace.WriteLine($"{User}, User");
-                    Trace.WriteLine($"{user.UserName}, User");
-                    Trace.WriteLine($"{MoviePlatform}, Platform");
-                    Trace.WriteLine($"{platform.PlatformName}, Platform");
-                    Trace.WriteLine($"{UserRating}, Rating");
-                    Trace.WriteLine($"{rating.RatingName}, Rating");
-
-
                     Movie movie = new Movie()
                     {
                         Description = Description,
@@ -138,6 +116,14 @@ namespace WPFProject.ViewModels
                     context.Movies.Add(movie);
 
                     context.SaveChanges();
+
+                    ButtonContent = "Dodaj Następny";
+                    MovieName = "";
+                    User = 1;
+                    UserRating = 3;
+                    Description = "";
+                    MovieGenre = 1;
+                    MoviePlatform = 1;
                 }
             }
             catch (Exception e)
