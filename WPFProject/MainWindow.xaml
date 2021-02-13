@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPFProject"
         mc:Ignorable="d"
         Title="Movie Catalog" 
-        Height="800" Width="1200"
+        Height="800" Width="1080"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
@@ -41,12 +41,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Background="#e8eaf6" Grid.Row="0" Orientation="Horizontal" >
-
-            <Button FontSize="14"  Margin="10" Width="100"  Content="List Filmów" Command="{Binding UpdateViewCommand}" CommandParameter="List"/>
-            <Button FontSize="14" Margin="10" Width="100" Content="Edytuj Film" Command="{Binding UpdateViewCommand}" CommandParameter="EditMovie"/>
-            <Button FontSize="14" Margin="10" Width="100" Content="Dodaj Film" Command="{Binding UpdateViewCommand}" CommandParameter="AddMovie"/>
-        </StackPanel>
+        <DockPanel Background="#e8eaf6" Grid.Row="0"  >
+            <Button Cursor="Hand" FontSize="14"  Margin="10" Width="100"  Content="List Filmów" Command="{Binding UpdateViewCommand}" CommandParameter="List"/>
+            <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Edytuj Film" Command="{Binding UpdateViewCommand}" CommandParameter="EditMovie"/>
+            <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Dodaj Film" Command="{Binding UpdateViewCommand}" CommandParameter="AddMovie"/>
+            <Button Cursor="Hand" HorizontalAlignment="Right" FontSize="14" Margin="10" Width="100" Content="Ustawienia" Command="{Binding UpdateViewCommand}" CommandParameter="Settings" RenderTransformOrigin="4.173,0.477"/>
+        </DockPanel>
 
         <Frame NavigationUIVisibility="Hidden" Grid.Row="1" Content="{Binding SelectedViewModel, Mode=TwoWay}" />
     </Grid>

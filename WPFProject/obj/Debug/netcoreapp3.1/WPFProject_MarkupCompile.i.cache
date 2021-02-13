@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\mateu\Desktop\code\wsei\WPFProjekt\WPFProject\App.xaml
-4752101404
+5-2005515538
 
-29-2012697175
+32-1965499790
 217635010919
-MainWindow.xaml;Views\AddListView.xaml;Views\EditListView.xaml;Views\ListView.xaml;
+MainWindow.xaml;Views\AddListView.xaml;Views\EditListView.xaml;Views\ListView.xaml;Views\SettingsView.xaml;
 
 False
 

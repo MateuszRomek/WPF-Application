@@ -34,17 +34,17 @@
                 <RowDefinition Height="80" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0" Grid.Column="1" Margin="0,10,10,0"  Content="Nazwa Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <TextBox Grid.Column="2"  
                      Name="movieName" 
                      Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-                  Text="{Binding MovieName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
+                    Text="{Binding MovieName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
                      >
             </TextBox>
 
@@ -92,6 +92,7 @@
             </ComboBox>
 
             <Button
+                Cursor="Hand"
                 Content="{Binding ButtonContent}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   
                 Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" 

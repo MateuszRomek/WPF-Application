@@ -39,16 +39,24 @@ namespace WPFProject.Commands
         public void Execute(object parameter)
         {
 
-            if (parameter.ToString() == "List")
+            string param = parameter.ToString();
+
+
+            switch (param)
             {
-                viewModel.SelectedViewModel = new ListViewModel();
-            }
-            else if (parameter.ToString() == "EditMovie")
-            {
-                viewModel.SelectedViewModel = new EditMovieViewModel();
-            } else if (parameter.ToString() == "AddMovie")
-            {
-                viewModel.SelectedViewModel = new AddMovieViewModel();
+                case "List":
+                    viewModel.SelectedViewModel = new ListViewModel();
+                    break;
+                case "EditMovie":
+                    viewModel.SelectedViewModel = new EditMovieViewModel();
+                    break;
+                case "AddMovie":
+                    viewModel.SelectedViewModel = new AddMovieViewModel();
+                    break;
+                case "Settings":
+                    viewModel.SelectedViewModel = new SettingsViewModel();
+                    break;
+
             }
 
         }
