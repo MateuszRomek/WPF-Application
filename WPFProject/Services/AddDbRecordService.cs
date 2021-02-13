@@ -102,5 +102,72 @@ namespace WPFProject.Services
             }
         }
 
+        /// <summary>
+        /// Checks a record in the Movies table. 
+        /// If it exists, it returns a string. If not, it creates a record in the database and returns OK information of the string type.
+        /// </summary>
+        /// <returns></returns>
+        public static string AddMovie(string title, string description, int genreId, int platformId, int userId, int ratingId )
+        {
+            try
+            {
+                using(var context = new MovieCatalogContext())
+                {
+
+                    var movieExist = context.Movies.Any(m => m.Title.ToLower().Trim() == title.ToLower().Trim());
+
+                    if (!movieExist)
+                    {
+                        var genre = context.Genres
+                                    .Where(g => g.Id == genreId)
+                                    .FirstOrDefault();
+
+                        var user = context.Users
+                            .Where(u => u.Id == userId)
+                            .FirstOrDefault();
+
+
+                        var platform = context.Platforms
+                            .Where(g => g.Id == platformId)
+                            .FirstOrDefault();
+
+                        var rating = context.Ratings
+                             .Where(r => r.Id == ratingId)
+                             .FirstOrDefault();
+
+                        Movie newMovie = new Movie()
+                        {
+                            Description = description,
+                            Title = title,
+                            Genre = genre,
+                            Platform = platform,
+                            Rating = rating
+                        };
+
+                        if (newMovie.Users == null)
+                        {
+                            newMovie.Users = new List<User>();
+                        }
+
+                        newMovie.Users.Add(user);
+                        context.Movies.Add(newMovie);
+
+                        context.SaveChanges();
+                        return "OK";
+                    } else
+                    {
+                        return "Film o takiej nazwie już istnieje";
+                    }
+
+                }
+
+
+
+            } catch(Exception e)
+            {
+                throw new ArgumentException();
+            }
+
+        }
     }
 }

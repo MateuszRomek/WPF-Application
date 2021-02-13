@@ -8,11 +8,13 @@ using WPFProject.Base;
 using WPFProject.Commands;
 using WPFProject.DB.Data;
 using WPFProject.DB.Models;
+using WPFProject.Services;
 
 namespace WPFProject.ViewModels
 {
     public class AddMovieViewModel : BaseViewModel, IDataErrorInfo
     {
+
         public ICommand SubmitCommand { get; set; }
         public ICommand LoadFormData { get; set; }
         public string Description { get; set; }
@@ -24,7 +26,7 @@ namespace WPFProject.ViewModels
         public int MovieGenre { get; set; }
 
         public string ButtonContent { get; set; } = "Dodaj";
-
+        public string ErrorString { get; set; }
         public ObservableCollection<RatingElement> RatingList { get;set; }
 
         public List<DB.Models.Genre> GenresList { get; set; }
@@ -59,6 +61,7 @@ namespace WPFProject.ViewModels
         public AddMovieViewModel()
         {
             this.ButtonContent = "Dodaj";
+            this.ErrorString = "";
             this.SubmitCommand = new RelayCommand(Submit);
             this.LoadFormData = new RelayCommand(LoadDataAsync);
             this.RatingList = new ObservableCollection<RatingElement>()
@@ -73,49 +76,7 @@ namespace WPFProject.ViewModels
 
         private void Submit()
         {
-          
-            try
-            {
-
-                using (MovieCatalogContext context = new MovieCatalogContext())
-                {
-
-                    var genre = context.Genres
-                        .Where(g => g.Id == MovieGenre)
-                        .FirstOrDefault();
-
-                    var user = context.Users
-                        .Where(u => u.Id == User)
-                        .FirstOrDefault();
-
-
-                    var platform = context.Platforms
-                        .Where(g => g.Id == MoviePlatform)
-                        .FirstOrDefault();
-
-                    var rating = context.Ratings
-                         .Where(r => r.Id == UserRating)
-                         .FirstOrDefault();
-
-                    Movie movie = new Movie()
-                    {
-                        Description = Description,
-                        Title = MovieName,
-                        Genre = genre,
-                        Platform = platform,
-                        Rating = rating
-                    };
-
-                    if (movie.Users == null)
-                    {
-                        movie.Users = new List<User>();
-                    }
-
-                    movie.Users.Add(user);
-
-                    context.Movies.Add(movie);
-
-                    context.SaveChanges();
+            var result =  AddDbRecordService.AddMovie(MovieName, Description, MovieGenre, MoviePlatform, User, UserRating);
 
                     ButtonContent = "Dodaj Następny";
                     MovieName = "";
@@ -124,14 +85,6 @@ namespace WPFProject.ViewModels
                     Description = "";
                     MovieGenre = 1;
                     MoviePlatform = 1;
-                }
-            }
-            catch (Exception e)
-            {
-                throw new ArgumentException();
-            }
-
-
         }
 
         private  void LoadDataAsync()
@@ -147,7 +100,16 @@ namespace WPFProject.ViewModels
           
         }
 
-
+        private void HandleResult( string result)
+        {
+            if(!(result == "OK"))
+            {
+                ErrorString = result;
+            } else
+            {
+                ErrorString = "";
+            }
+        }
     }
 }
 
