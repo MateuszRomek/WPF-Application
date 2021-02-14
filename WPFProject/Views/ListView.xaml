@@ -10,8 +10,8 @@
       Title="ListView">
 
 
-
     <Grid>
+     
         <DataGrid>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
@@ -22,6 +22,34 @@
 
         <Label Content="Lista filmów" />
 
+        <ListView ItemsSource="{Binding Movies}">
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Setter Property="TextElement.FontSize" Value="16" />
+                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                            <Setter Property="Padding" Value="5,3,3,3"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="TextElement.Foreground" Value="Black"/>
+                                </Trigger>
+                            </Style.Triggers>
+                            
+                            
+                            
+                        </Style>
+
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn  Header="Tytuł Filmu" Width="270" DisplayMemberBinding="{Binding MovieTitle}" />
+                    <GridViewColumn Header="Obejrzany na" Width="270" DisplayMemberBinding="{Binding PlatformName}" />
+                    <GridViewColumn Header="Gatunek" Width="270" DisplayMemberBinding="{Binding MovieGenre}" />
+                    <GridViewColumn Header="Ocena w skali 1 - 5" Width="270" DisplayMemberBinding="{Binding MovieRating}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
 
 
     </Grid>
