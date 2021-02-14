@@ -36,7 +36,7 @@ namespace WPFProject.Services
                 }
             } catch (Exception e)
             {
-                throw new ArgumentException();
+                throw new Exception(e.Message);
             }
         }
         /// <summary>
@@ -67,7 +67,7 @@ namespace WPFProject.Services
             }
             catch (Exception e)
             {
-                throw new ArgumentException();
+                throw new Exception(e.Message);
             }
         }
         /// <summary>
@@ -98,7 +98,7 @@ namespace WPFProject.Services
             }
             catch (Exception e)
             {
-                throw new ArgumentException();
+                throw new Exception(e.Message);
             }
         }
 
@@ -165,7 +165,7 @@ namespace WPFProject.Services
 
             } catch(Exception e)
             {
-                throw new ArgumentException();
+                throw new Exception(e.Message);
             }
 
         }

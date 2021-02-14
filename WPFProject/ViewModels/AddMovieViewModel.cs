@@ -63,7 +63,7 @@ namespace WPFProject.ViewModels
             this.ButtonContent = "Dodaj";
             this.ErrorString = "";
             this.SubmitCommand = new RelayCommand(Submit);
-            this.LoadFormData = new RelayCommand(LoadDataAsync);
+            this.LoadFormData = new RelayCommand(LoadData);
             this.RatingList = new ObservableCollection<RatingElement>()
         {
             new RatingElement("Nieporozumienie", 1),
@@ -77,17 +77,10 @@ namespace WPFProject.ViewModels
         private void Submit()
         {
             var result =  AddDbRecordService.AddMovie(MovieName, Description, MovieGenre, MoviePlatform, User, UserRating);
-
-                    ButtonContent = "Dodaj Następny";
-                    MovieName = "";
-                    User = 1;
-                    UserRating = 3;
-                    Description = "";
-                    MovieGenre = 1;
-                    MoviePlatform = 1;
+            HandleResult(result);
         }
 
-        private  void LoadDataAsync()
+        private void LoadData()
         {
             using MovieCatalogContext context = new MovieCatalogContext();
             var genres  =  context.Genres.ToList();
@@ -108,6 +101,13 @@ namespace WPFProject.ViewModels
             } else
             {
                 ErrorString = "";
+                ButtonContent = "Dodaj Następny";
+                MovieName = "";
+                User = 1;
+                UserRating = 3;
+                Description = "";
+                MovieGenre = 1;
+                MoviePlatform = 1;
             }
         }
     }
