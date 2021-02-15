@@ -169,5 +169,33 @@ namespace WPFProject.Services
             }
 
         }
+        /// <summary>
+        /// Checks a record in the Wishlist table. 
+        /// If it exists, it returns a string. If not, it creates a record in the database and returns OK information of the string type.
+        /// </summary>
+        /// <returns></returns>
+        public static string AddMovieToWishlist (string movieTitle)
+        {
+            try
+            {
+                using (var context = new MovieCatalogContext())
+                {
+                    var movieExist = context.Wishlist.Any(w => w.MovieTitle.ToLower().Trim() == movieTitle.ToLower().Trim());
+                    if (movieExist) return "Film o takim tytule znajduje się już na Twojej liście do obejrzenia";
+
+                    var wishlist = new Wishlist()
+                    {
+                        MovieTitle = movieTitle
+                    };
+
+                    context.Wishlist.Add(wishlist);
+                    context.SaveChanges();
+                    return "OK";
+                }
+            } catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

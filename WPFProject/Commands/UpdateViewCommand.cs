@@ -59,6 +59,9 @@ namespace WPFProject.Commands
                 case "Settings":
                     viewModel.SelectedViewModel = new SettingsViewModel();
                     break;
+                case "Wishlist":
+                    viewModel.SelectedViewModel = new WishlistViewModel();
+                    break;
 
             }
 

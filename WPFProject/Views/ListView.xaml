@@ -11,7 +11,7 @@
 
 
     <Grid>
-     
+
         <DataGrid>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
@@ -19,8 +19,6 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
-
-        <Label Content="Lista filmów" />
 
         <ListView ItemsSource="{Binding Movies}">
             <ListView.View>

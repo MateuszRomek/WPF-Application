@@ -7,6 +7,6 @@ namespace WPFProject.DB.Models
     public class Wishlist
     {
         public int Id { get; set; }
-        public Movie Movie { get; set; }
+        public string MovieTitle { get; set; }
     }
 }

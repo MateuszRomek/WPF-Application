@@ -26,6 +26,10 @@
         <DataTemplate DataType="{x:Type viewmodels:SettingsViewModel}">
             <views:SettingsView/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type viewmodels:WishlistViewModel}">
+            <views:WishListView/>
+        </DataTemplate>
 
 
     </Application.Resources>

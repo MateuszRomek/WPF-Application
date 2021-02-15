@@ -124,7 +124,10 @@ namespace WPFProject.ViewModels
         {
             if(!(result == "OK"))
             {
-                ErrorString = result;   
+                ErrorString = result;
+                NewUserName = "";
+                NewGenreName = "";
+                NewPlatformName = "";
             } else
             {
                 ErrorString = "";
