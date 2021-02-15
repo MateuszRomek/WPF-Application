@@ -45,6 +45,7 @@
             <Button Cursor="Hand" FontSize="14"  Margin="10" Width="100"  Content="List Filmów" Command="{Binding UpdateViewCommand}" CommandParameter="List"/>
             <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Edytuj Film" Command="{Binding UpdateViewCommand}" CommandParameter="EditMovie"/>
             <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Dodaj Film" Command="{Binding UpdateViewCommand}" CommandParameter="AddMovie"/>
+            <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Usuń Film" Command="{Binding UpdateViewCommand}" CommandParameter="DeleteMovie"/>
             <Button Cursor="Hand" HorizontalAlignment="Right" FontSize="14" Margin="10" Width="100" Content="Ustawienia" Command="{Binding UpdateViewCommand}" CommandParameter="Settings" RenderTransformOrigin="4.173,0.477"/>
         </DockPanel>
 

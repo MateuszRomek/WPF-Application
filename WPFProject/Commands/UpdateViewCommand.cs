@@ -53,6 +53,9 @@ namespace WPFProject.Commands
                 case "AddMovie":
                     viewModel.SelectedViewModel = new AddMovieViewModel();
                     break;
+                case "DeleteMovie":
+                    viewModel.SelectedViewModel = new DeleteMovieViewModel();
+                    break;
                 case "Settings":
                     viewModel.SelectedViewModel = new SettingsViewModel();
                     break;

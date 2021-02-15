@@ -10,18 +10,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFProject.ViewModels;
 
 namespace WPFProject.Views
 {
     /// <summary>
-    /// Interaction logic for AddListView.xaml
+    /// Interaction logic for DeleteMovie.xaml
     /// </summary>
-    public partial class AddListView : Page
+    public partial class DeleteMovie : Page
     {
-        public AddListView()
+        public DeleteMovie()
         {
             InitializeComponent();
-        }  
+        }
     }
 }

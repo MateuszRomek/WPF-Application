@@ -44,7 +44,9 @@
                 <ColumnDefinition Width="270" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="red" Text="{Binding ErrorString}" FontSize="18" FontWeight="Bold"/>
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="2"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       Foreground="red" Text="{Binding ErrorString}" FontSize="18" FontWeight="Bold" />
         </Grid>
         
         <Grid Grid.Row="2" RenderTransformOrigin="0.5,0.656">
@@ -68,7 +70,7 @@
             <TextBox Grid.Column="2"  
                      Name="movieName" 
                      Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-                    Text="{Binding MovieName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
+                     Text="{Binding MovieName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
                      >
             </TextBox>
 
@@ -100,8 +102,8 @@
                      Name="Description" 
                      Margin="0,10,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" 
                      Padding="10"
-                    TextWrapping="Wrap"
-                  Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
+                     TextWrapping="Wrap"
+                     Text="{Binding Description, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
                      >
             </TextBox>
 
