@@ -14,37 +14,62 @@ namespace WPFProject.ViewModels
 {
     public class SettingsViewModel : BaseViewModel, IDataErrorInfo
     {
+        /// <summary>
+        /// The property is set when the user enters data into the TextBox on the Add New User row
+        /// </summary>
         public string NewUserName { get; set; }
-
+        /// <summary>
+        /// The property is set when the user enters data into the TextBox on the Add New Genre row
+        /// </summary>
         public string NewGenreName { get; set; }
-
+        /// <summary>
+        /// The property is set when the user enters data into the TextBox on the Add New Platform row
+        /// </summary>
         public string NewPlatformName { get; set; }
 
-        public bool IsUserNameEnabled { get; set; }
-        public bool IsGenreNameEnabled { get; set; }
-        public bool IsPlatformNameEnabled { get; set; }
-        public string ErrorString { get; set; }
-
         /// <summary>
-        /// Commands that are executed in Settings View.
+        /// Property that manages IsEnabled property on Add User Button
         /// </summary>
-        #region Commands
+        public bool IsUserNameEnabled { get; set; }
+        /// <summary>
+        /// Property that manages IsEnabled property on Add User Button
+        /// </summary>
+        public bool IsGenreNameEnabled { get; set; }
+        /// <summary>
+        /// Property that manages IsEnabled property on Add User Button
+        /// </summary>
+        public bool IsPlatformNameEnabled { get; set; }
+        /// <summary>
+        /// ErrorMessage to inform users what went wrong.
+        /// </summary>
+        public string ErrorMessage { get; set; }
 
+   
+        #region Commands
+        /// <summary>
+        /// Command that executes when user click Button in Platform row
+        /// </summary>
         public ICommand AddPlatform {get;set;}
-        public  ICommand AddGenre {get;set;}
-        public  ICommand AddUser {get;set;}
+        /// <summary>
+        /// Command that executes when user click Button in Genre row
+        /// </summary>
+        public ICommand AddGenre {get;set;}
+        /// <summary>
+        /// Command that executes when user click Button in User row
+        /// </summary>
+        public ICommand AddUser {get;set;}
         #endregion
 
 
         /// <summary>
-        /// Constructor setting up Commands
+        /// SettinsViedModal Initialization 
         /// </summary>
         public SettingsViewModel() 
         {
             this.AddPlatform = new RelayCommand(PlatformClick);
             this.AddGenre = new RelayCommand(GenreClick);
             this.AddUser = new RelayCommand(UserClick);
-            this.ErrorString = "";
+            this.ErrorMessage = "";
         }
 
         #region validation
@@ -124,13 +149,13 @@ namespace WPFProject.ViewModels
         {
             if(!(result == "OK"))
             {
-                ErrorString = result;
+                ErrorMessage = result;
                 NewUserName = "";
                 NewGenreName = "";
                 NewPlatformName = "";
             } else
             {
-                ErrorString = "";
+                ErrorMessage = "";
             }
 
         }
