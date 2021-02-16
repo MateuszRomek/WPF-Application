@@ -14,6 +14,6 @@ namespace WPFProject.DB.Models
         public Genre Genre { get; set; }
         public Platform Platform { get; set; }
         public Rating Rating{ get; set; }
-        public ICollection<User> Users { get; set; }
+        public User User { get; set; }
     }
 }

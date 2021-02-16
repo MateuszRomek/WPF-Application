@@ -12,8 +12,19 @@ namespace WPFProject.ViewModels
 {
     public class ListViewModel : BaseViewModel
     {
+        /// <summary>
+        /// List of movies in the database.
+        /// </summary>
         public List<ListViewObject> Movies { get; set; }
+
+        /// <summary>
+        /// Command that executes when View is loaded.
+        /// </summary>
         public ICommand LoadData { get; set; }
+
+        /// <summary>
+        /// ListViewModal initialization
+        /// </summary>
         public ListViewModel()
         {
             this.LoadData = new RelayCommand(LoadMovies);
@@ -49,30 +60,43 @@ namespace WPFProject.ViewModels
                                          .Join(context.Ratings,
                                                movie => movie.MovieRating.Id,
                                                rating => rating.Id,
-                                               (movie, rating) => new ListViewObject(movie.MovieId, movie.PlatformName, movie.MovieTitle, rating.RatingValue, movie.MovieGenre)
-                                         ).ToList();
+                                               (movie, rating) => new {
+                                                   MovieId = movie.MovieId,
+                                                   PlatformName = movie.PlatformName,
+                                                   MovieTitle = movie.MovieTitle,
+                                                   MovieRating = rating.Id,
+                                                   MovieGenre = movie.MovieGenre,
+                                               }
+                                         )
+                                         .Join(context.Users,
+                                               movie => movie.MovieId ,
+                                               user => user.Id,
+                                               (movie, user) => new ListViewObject(movie.MovieId, movie.PlatformName, movie.MovieTitle, movie.MovieRating, movie.MovieGenre, user.UserName )
+                                         )
+                                         .ToList();
 
             Movies = movies;
         }
 
     }
-
+    //new ListViewObject(movie.MovieId, movie.PlatformName, movie.MovieTitle, rating.RatingValue, movie.MovieGenre)
     public struct ListViewObject
     {
         public int MovieId { get; private set; }
         public string PlatformName { get;  private set; }
         public string MovieTitle { get; private set; }
         public int MovieRating { get; private set; }
-
         public string MovieGenre { get; private set; }
 
-        public ListViewObject(int id,  string pName, string mTitle, int mRating, string mGenre )
+        public string CreatedBy { get; private set; }
+        public ListViewObject(int id,  string pName, string mTitle, int mRating, string mGenre, string userName )
         {
             MovieId = id;
             PlatformName = pName;
             MovieTitle = mTitle;
             MovieRating = mRating;
             MovieGenre = mGenre;
+            CreatedBy = userName;
         }
     }
 }

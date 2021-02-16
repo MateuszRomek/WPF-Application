@@ -135,21 +135,18 @@ namespace WPFProject.Services
                              .Where(r => r.Id == ratingId)
                              .FirstOrDefault();
 
+
                         Movie newMovie = new Movie()
                         {
                             Description = description,
                             Title = title,
                             Genre = genre,
                             Platform = platform,
-                            Rating = rating
+                            Rating = rating,
+                            User = user
+                           
                         };
 
-                        if (newMovie.Users == null)
-                        {
-                            newMovie.Users = new List<User>();
-                        }
-
-                        newMovie.Users.Add(user);
                         context.Movies.Add(newMovie);
 
                         context.SaveChanges();

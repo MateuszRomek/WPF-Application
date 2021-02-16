@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WPFProject.DB.Data;
 
 namespace WPFProject.Migrations
 {
     [DbContext(typeof(MovieCatalogContext))]
-    partial class MovieCatalogContextModelSnapshot : ModelSnapshot
+    [Migration("20210216194355_user-relation")]
+    partial class userrelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

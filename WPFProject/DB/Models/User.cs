@@ -13,6 +13,5 @@ namespace WPFProject.DB.Models
         [Required]
         public string UserName { get; set; }
 
-        public ICollection<Movie> Movies { get; set; }
     }
 }

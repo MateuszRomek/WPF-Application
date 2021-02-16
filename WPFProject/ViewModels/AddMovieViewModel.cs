@@ -12,7 +12,7 @@ using WPFProject.Services;
 
 namespace WPFProject.ViewModels
 {
-    public class AddViewModel : BaseViewModel, IDataErrorInfo
+    public class AddMovieViewModel : BaseViewModel, IDataErrorInfo
     {
         #region  Commands
         /// <summary>
@@ -126,7 +126,7 @@ namespace WPFProject.ViewModels
         /// <summary>
         /// ViewModel Initialization.
         /// </summary>
-        public AddViewModel()
+        public AddMovieViewModel()
         {
             this.ButtonContent = "Dodaj";
             this.ErrorMessage = "";

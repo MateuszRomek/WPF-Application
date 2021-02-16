@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="Usuń film"   HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="10,10,10,10" FontWeight="Bold"/>
-        <TextBlock  Text="{Binding ErrorString}" Grid.Row="1" FontSize="16" Foreground="Red" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="bold"/>
+        <TextBlock  Text="{Binding ErrorMessage}" Grid.Row="1" FontSize="16" Foreground="Red" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="bold"/>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="160" />
