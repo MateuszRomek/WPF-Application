@@ -60,7 +60,7 @@
                      HorizontalAlignment="Center"
                      FontSize="16"
                      VerticalAlignment="Center"
-                     Text="{Binding MovieName}"
+                     Text="{Binding MovieTitle}"
                      >
             </TextBlock>
 
