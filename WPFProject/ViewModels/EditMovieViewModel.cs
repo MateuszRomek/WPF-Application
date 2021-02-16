@@ -14,27 +14,87 @@ namespace WPFProject.ViewModels
 {
     public class EditMovieViewModel : BaseViewModel
     {
-
+        #region Public Properties
+        /// <summary>
+        /// The name of the movie that the user wants to edit
+        /// </summary>
         public string  SearchMovieTitle {get;set;}
+
+        /// <summary>
+        /// A description of the selected movie that is currently saved in the database. This filed can be modified by the user
+        /// </summary>
         public string Description { get; set; }
-        public string MovieName { get; set; }
+        /// <summary>
+        /// The title of the selected movie, which is currently stored in the database. This field cannot be changed
+        /// </summary>
+        public string MovieTitle { get; set; }
+
+        /// <summary>
+        /// The new UserRating value selected by the user will be assigned to this field.
+        /// </summary>
         public int UserRating { get; set; }
+
+        /// <summary>
+        /// The new MoviePlatform value selected by the user will be assigned to this field.
+        /// </summary>
         public int MoviePlatform { get; set; }
+
+        /// <summary>
+        /// The new MovieGenre value selected by the user will be assigned to this field.
+        /// </summary>
         public int MovieGenre { get; set; }
+
+        /// <summary>
+        /// Error Message to inform user what went wrong or show text about incorrect action
+        /// </summary>
         public string ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Platform of the selected movie that is currently saved in the database.
+        /// </summary>
         public int SelectedMoviePlatform { get; set; }
+        /// <summary>
+        /// Genre of the selected movie that is currently saved in the database.
+        /// </summary>
         public int SelectedMovieGenre { get; set; }
+        /// <summary>
+        /// A user rating of the selected movie that is currently saved in the database.
+        /// </summary>
         public int SelectedMovieRating { get; set; }
-
+        /// <summary>
+        /// The property responsible for whether the form with the movie details is visible.
+        /// </summary>
         public string VisibleForm { get; set; }
-        public ObservableCollection<RatingElement> RatingList { get; set; }
-
+        #endregion
+        #region Database lists
+        /// <summary>
+        /// List of current ratings extracted from the database.
+        /// </summary>
+        public List<DB.Models.Rating> RatingList { get; set; }
+        /// <summary>
+        /// List of current movie genres extracted from the database
+        /// </summary>
         public List<DB.Models.Genre> GenresList { get; set; }
+        /// <summary>
+        /// List of current VOD platforms extracted from the database
+        /// </summary>
         public List<DB.Models.Platform> PlatformsList { get; set; }
+        #endregion
 
+        #region Commands
+        /// <summary>
+        /// The Command that is performed after the user presses the Save button 
+        /// </summary>
         public ICommand SaveAction { get; set; }
+        /// <summary>
+        /// The Command that is performed after the user presses the Search button 
+        /// </summary>
         public ICommand SearchAction { get; set; }
+        #endregion
 
+        /// <summary>
+        /// EditMovieViewModel initialization
+        /// </summary>
         public EditMovieViewModel()
         {
             this.SaveAction = new RelayCommand(UpdateRecord);
@@ -63,20 +123,13 @@ namespace WPFProject.ViewModels
 
                     var genres = context.Genres.ToList();
                     var platforms = context.Platforms.ToList();
+                    var ratings = context.Ratings.ToList();
 
                     GenresList = genres;
                     PlatformsList = platforms;
+                    RatingList = ratings;
 
-                    this.RatingList = new ObservableCollection<RatingElement>()
-                {
-                    new RatingElement("Nieporozumienie", 1),
-                    new RatingElement("Ujdzie", 2),
-                    new RatingElement("Średni", 3),
-                    new RatingElement("Dobry", 4),
-                    new RatingElement("Świetny", 5),
-                };
-
-                    MovieName = movie.Title;
+                    MovieTitle = movie.Title;
                     Description = movie.Description;
                     SelectedMovieGenre = movie.Genre.Id - 1;
                     SelectedMoviePlatform = movie.Platform.Id - 1;

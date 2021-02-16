@@ -12,15 +12,36 @@ namespace WPFProject.ViewModels
 {
     public class WishlistViewModel : BaseViewModel
     {
-        public ICommand AddAction { get; set; }
-        public ICommand DeleteAction { get; set; }
 
+        /// <summary>
+        /// The command that is executed when the user clicks the Add button
+        /// </summary>
+        public ICommand AddAction { get; set; }
+        /// <summary>
+        /// The command that is executed when the user clicks the Delete button
+        /// </summary>
+        public ICommand DeleteAction { get; set; }
+        /// <summary>
+        /// The command that is executed when view is loaded.
+        /// </summary>
         public ICommand LoadData { get; set; }
+        /// <summary>
+        /// Error Message to inform user about error or incorrect action
+        /// </summary>
         public string ErrorMessage { get; set; }
+        /// <summary>
+        ///The name of the movie that will be added
+        /// </summary>
         public string MovieTitle { get; set; }
 
+        /// <summary>
+        /// List of wishlist movies that are in databse.
+        /// </summary>
         public List<string> Wishlist { get; set;}
 
+        /// <summary>
+        /// WishlistViewModel initialization
+        /// </summary>
         public WishlistViewModel()
         {
             this.AddAction = new RelayCommand(AddMovieToWishlist);
