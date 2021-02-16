@@ -43,13 +43,13 @@ namespace WPFProject.ViewModels
         {
             get
             {
-                if ("Description" == columnName && String.IsNullOrEmpty(Description) ||  "MovieName" == columnName && String.IsNullOrEmpty(MovieName))
+                if ( "MovieName" == columnName && String.IsNullOrEmpty(MovieName))
                 {
                         IsEnabled = false;
                         return "Enter Movie Name";   
                 } else
                 {
-                    if(!String.IsNullOrEmpty(Description) && !String.IsNullOrEmpty(MovieName))
+                    if(!String.IsNullOrEmpty(MovieName))
                     {
                         IsEnabled = true;
                     }
@@ -65,13 +65,13 @@ namespace WPFProject.ViewModels
             this.SubmitCommand = new RelayCommand(Submit);
             this.LoadFormData = new RelayCommand(LoadData);
             this.RatingList = new ObservableCollection<RatingElement>()
-        {
+            {
             new RatingElement("Nieporozumienie", 1),
             new RatingElement("Ujdzie", 2),
             new RatingElement("Średni", 3),
             new RatingElement("Dobry", 4),
             new RatingElement("Świetny", 5),
-        };
+            };
         }
 
         private void Submit()
@@ -82,14 +82,18 @@ namespace WPFProject.ViewModels
 
         private void LoadData()
         {
-            using MovieCatalogContext context = new MovieCatalogContext();
-            var genres  =  context.Genres.ToList();
-            var platforms  =  context.Platforms.ToList();
-            var users = context.Users.ToList();
+            using (MovieCatalogContext context = new MovieCatalogContext())
+            {
+
+                var genres  =  context.Genres.ToList();
+                var platforms  =  context.Platforms.ToList();
+                var users = context.Users.ToList();
             
-            AvaliableUsers = users;
-            GenresList = genres;
-            PlatformsList = platforms;
+                AvaliableUsers = users;
+                GenresList = genres;
+                PlatformsList = platforms;
+
+            }
           
         }
 
@@ -111,16 +115,4 @@ namespace WPFProject.ViewModels
             }
         }
     }
-}
-
-public class RatingElement
-{
-    public int Id { get; set; }
-    public string RatingName { get; set; }
-    public RatingElement(string name, int id)
-    {
-        RatingName = name;
-        Id = id;
-    }
-
 }

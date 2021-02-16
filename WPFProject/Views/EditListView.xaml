@@ -4,11 +4,108 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFProject.Views"
+      Height="800" Width="1080"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
       Title="EditListView">
 
-    <Grid>
-        <TextBlock Width="Auto" Height="Auto" Background="Wheat" FontSize="40">Edit</TextBlock>
+    <Grid Background="#FFFF">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="55" />
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"  Text="Edytuj film" VerticalAlignment="Center" FontSize="16" FontWeight="bold" Margin="10,10,10,10"/>
+        <TextBlock Grid.Row="1"  Text="{Binding ErrorMessage}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" FontSize="16" FontWeight="bold" Margin="10,10,10,10"/>
+       
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Wyszukaj film po tytule"
+                   VerticalAlignment="Center"
+                   FontSize="16"
+                   HorizontalAlignment="Center"
+                   />
+            <TextBox Text="{Binding SearchMovieTitle}" Grid.Column="1"  VerticalAlignment="Center" FontSize="16" />
+            <Button Content="Wyszukaj" VerticalAlignment="Center"  FontSize="16" Grid.Column="2" Width="120" Command="{Binding SearchAction}"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Visibility="{Binding VisibleForm}">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="45" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="71" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="1" Margin="0,10,10,0"  Content="Nazwa Filmu" FontSize="14" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBlock Grid.Column="2"  
+                     Name="movieName" 
+                     Margin="0,10,0,0"
+                     HorizontalAlignment="Center"
+                     FontSize="16"
+                     VerticalAlignment="Center"
+                     Text="{Binding MovieName}"
+                     >
+            </TextBlock>
+
+            <Label Grid.Row="1" Grid.Column="1" Margin="0,10,10,0"  Content="Gatunek Filmu" FontSize="14" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <ComboBox 
+                      ItemsSource="{Binding GenresList}" Grid.Row="1" 
+                      Grid.Column="2" FontSize="14"  Width="auto" Margin="0,10,0,0" 
+                      SelectedIndex="{Binding SelectedMovieGenre}"
+                      SelectedValue="{Binding MovieGenre}" SelectedValuePath="Id"  DisplayMemberPath="GenreName">
+
+            </ComboBox>
+
+
+            <Label Grid.Row="2" Grid.Column="1" Margin="0,10,10,0"  Content="Platformy VOD" FontSize="14" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <ComboBox SelectedIndex="{Binding SelectedMoviePlatform}"
+                      ItemsSource="{Binding PlatformsList}" FontSize="14" Grid.Row="2" Grid.Column="2"
+                      Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MoviePlatform}" 
+                      SelectedValuePath="Id"  DisplayMemberPath="PlatformName">
+
+            </ComboBox>
+
+            <Label Grid.Row="3" Grid.Column="1" Margin="0,10,10,0"  Content="Ocena Filmu" FontSize="14" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <ComboBox SelectedIndex="{Binding SelectedMovieRating }" FontSize="14" Grid.Row="3" Grid.Column="2" 
+                      Width="auto" Margin="0,10,0,0" 
+                      SelectedValue="{Binding UserRating}" ItemsSource="{Binding RatingList}" SelectedValuePath="Id" DisplayMemberPath="RatingName" >
+            </ComboBox>
+
+            <Label Grid.Row="4" Grid.Column="1" Margin="0,10,10,0"  Content="Krótki Opis" FontSize="14" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <TextBox Grid.Row="4" Grid.Column="2"  
+                     Name="Description" 
+                     Margin="0,10,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" 
+                     Padding="10"
+                     TextWrapping="Wrap"
+                     Text="{Binding Description}"   
+                     >
+            </TextBox>
+
+            <Button
+                Cursor="Hand"
+                Content="Zapisz"
+                VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   
+                Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" 
+                FontSize="16" Command="{Binding SaveAction }"
+                />
+
+        </Grid>
     </Grid>
 </Page>
