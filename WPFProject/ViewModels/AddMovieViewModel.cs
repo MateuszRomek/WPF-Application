@@ -14,6 +14,7 @@ namespace WPFProject.ViewModels
 {
     public class AddViewModel : BaseViewModel, IDataErrorInfo
     {
+        #region  Commands
         /// <summary>
         ///  Action that is executed when user click Add button
         /// </summary>
@@ -22,7 +23,9 @@ namespace WPFProject.ViewModels
         /// Action that is executed when ViewModel is loaded
         /// </summary>
         public ICommand LoadAction { get; set; }
+        #endregion
 
+        #region Public Properties
         /// <summary>
         /// Description of the movie. Can be added by the user but it's not required.
         /// </summary>
@@ -66,7 +69,9 @@ namespace WPFProject.ViewModels
         /// Set ErrorMessage for the user if something went wrong.
         /// </summary>
         public string ErrorMessage { get; set; }
+        #endregion
 
+        #region Database Lists
         /// <summary>
         /// This list represents the possible Movie Ratings that are defined in the database. It is filled when the view loads.
         /// </summary>
@@ -84,7 +89,7 @@ namespace WPFProject.ViewModels
         /// </summary>
 
         public List<DB.Models.User> AvaliableUsers { get; set; }
-
+        #endregion
         /// <summary>
         /// Public method that returns empty string. Implemented from IDataErrorInfo interface
         /// </summary>

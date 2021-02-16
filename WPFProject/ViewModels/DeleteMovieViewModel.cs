@@ -10,10 +10,27 @@ namespace WPFProject.ViewModels
 {
     public class DeleteMovieViewModel : BaseViewModel
     {
+        /// <summary>
+        ///  Action that is executed when user click Delete button
+        /// </summary>
         public ICommand DeleteCommand { get; set; }
+
+        /// <summary>
+        /// The name of the movie to be deleted.
+        /// </summary>
         public string DeleteMovieTitle { get; set; }
-        public string ErrorString { get; set; }
+        /// <summary>
+        /// Error Message to inform user what went wrong.
+        /// </summary>
+        public string ErrorMessage { get; set; }
+        /// <summary>
+        /// Delete Button content
+        /// </summary>
         public string ButtonContent { get; set; }
+
+        /// <summary>
+        /// DeleteViewModal Initialization
+        /// </summary>
         public DeleteMovieViewModel()
         {
             this.DeleteCommand = new RelayCommand(DeleteMovie);
@@ -30,11 +47,11 @@ namespace WPFProject.ViewModels
         {
             if(result != "OK")
             {
-                ErrorString = result;
+                ErrorMessage = result;
 
             } else
             {
-                ErrorString = "";
+                ErrorMessage = "";
                 DeleteMovieTitle = "";
                 ButtonContent = "Usuń Następny";
             }
