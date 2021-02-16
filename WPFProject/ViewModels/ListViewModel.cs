@@ -46,7 +46,8 @@ namespace WPFProject.ViewModels
                                                     PlatformName = platform.PlatformName,
                                                     MovieTitle = movie.Title,
                                                     MovieRating = movie.Rating,
-                                                    MovieGenre = movie.Genre
+                                                    MovieGenre = movie.Genre,
+                                                    MovieUser = movie.User
                                                 })
                                             .Join(context.Genres,
                                                    movie => movie.MovieGenre.Id,
@@ -57,6 +58,7 @@ namespace WPFProject.ViewModels
                                                        PlatformName = movie.PlatformName,
                                                        MovieTitle = movie.MovieTitle,
                                                        MovieRating = movie.MovieRating,
+                                                       MovieUser = movie.MovieUser,
                                                        MovieGenre = genre.GenreName
                                                    }
                                                   )
@@ -70,16 +72,18 @@ namespace WPFProject.ViewModels
                                                       MovieTitle = movie.MovieTitle,
                                                       MovieRating = rating.Id,
                                                       MovieGenre = movie.MovieGenre,
+                                                      MovieUser = movie.MovieUser,
                                                   }
                                             )
                                             .Join(context.Users,
-                                                  movie => movie.MovieId,
+                                                  movie => movie.MovieUser.Id,
                                                   user => user.Id,
                                                   (movie, user) => new ListViewObject(movie.MovieId, movie.PlatformName, movie.MovieTitle, movie.MovieRating, movie.MovieGenre, user.UserName)
                                             )
                                             .ToList();
 
                     Movies = movies;
+                    Trace.WriteLine(movies.Count);
                 }
             } catch(Exception e)
             {
