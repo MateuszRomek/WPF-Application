@@ -9,7 +9,11 @@ namespace WPFProject.Services
 {
     public static class DeleteDbRecordService
     {
-
+        /// <summary>
+        /// Check if movie exist in current database. If exist it is removed otherwise returns string information
+        /// </summary>
+        /// <param name="movieTitle"></param>
+        /// <returns></returns>
         public static string DeleteMovie (string movieTitle)
         {
             try
@@ -36,6 +40,11 @@ namespace WPFProject.Services
             }
         }
 
+        /// <summary>
+        /// Check if Wishlist contain movieTitle. If contains movie is removed otherwise returns string information
+        /// </summary>
+        /// <param name="movieTitle"></param>
+        /// <returns></returns>
         public static string DeleteWishlistItem(string movieTitle)
         {
             try

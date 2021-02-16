@@ -17,7 +17,7 @@
         <DataGrid>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
-                    <i:InvokeCommandAction Command="{Binding LoadFormData}" />
+                    <i:InvokeCommandAction Command="{Binding LoadAction}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </DataGrid>
@@ -46,7 +46,7 @@
 
             <TextBlock Grid.Column="1" Grid.ColumnSpan="2"
                        HorizontalAlignment="Center" VerticalAlignment="Center" 
-                       Foreground="red" Text="{Binding ErrorString}" FontSize="18" FontWeight="Bold" />
+                       Foreground="red" Text="{Binding ErrorMessage}" FontSize="18" FontWeight="Bold" />
         </Grid>
         
         <Grid Grid.Row="2" RenderTransformOrigin="0.5,0.656">
@@ -70,7 +70,7 @@
             <TextBox Grid.Column="2"  
                      Name="movieName" 
                      Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-                     Text="{Binding MovieName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
+                     Text="{Binding MovieTitle, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"   
                      >
             </TextBox>
 
@@ -122,7 +122,7 @@
                 Content="{Binding ButtonContent}"
                 VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="45"   
                 Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" 
-                FontSize="16" Command="{Binding SubmitCommand }"
+                FontSize="16" Command="{Binding SubmitAction }"
                 IsEnabled="{Binding IsEnabled}"
                 />
         </Grid>
