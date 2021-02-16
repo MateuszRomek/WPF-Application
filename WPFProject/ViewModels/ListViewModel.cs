@@ -33,49 +33,60 @@ namespace WPFProject.ViewModels
 
         private void LoadMovies()
         {
-            using MovieCatalogContext context = new MovieCatalogContext();
-            var movies = context.Movies.Join(context.Platforms,
-                                             movie => movie.Platform.Id,
-                                             platform => platform.Id,
-                                             (movie, platform) => new
-                                             {
-                                                 MovieId = movie.Id,
-                                                 PlatformName = platform.PlatformName,
-                                                 MovieTitle = movie.Title,
-                                                 MovieRating = movie.Rating,
-                                                 MovieGenre = movie.Genre
-                                             })
-                                         .Join( context.Genres,
-                                                movie => movie.MovieGenre.Id,
-                                                genre => genre.Id,
-                                                (movie, genre) => new
+            try
+            {
+                using (MovieCatalogContext context = new MovieCatalogContext())
+                {
+                    var movies = context.Movies.Join(context.Platforms,
+                                                movie => movie.Platform.Id,
+                                                platform => platform.Id,
+                                                (movie, platform) => new
                                                 {
-                                                    MovieId = movie.MovieId,
-                                                    PlatformName = movie.PlatformName,
-                                                    MovieTitle = movie.MovieTitle,
-                                                    MovieRating = movie.MovieRating,
-                                                    MovieGenre = genre.GenreName
-                                                }
-                                               )
-                                         .Join(context.Ratings,
-                                               movie => movie.MovieRating.Id,
-                                               rating => rating.Id,
-                                               (movie, rating) => new {
-                                                   MovieId = movie.MovieId,
-                                                   PlatformName = movie.PlatformName,
-                                                   MovieTitle = movie.MovieTitle,
-                                                   MovieRating = rating.Id,
-                                                   MovieGenre = movie.MovieGenre,
-                                               }
-                                         )
-                                         .Join(context.Users,
-                                               movie => movie.MovieId ,
-                                               user => user.Id,
-                                               (movie, user) => new ListViewObject(movie.MovieId, movie.PlatformName, movie.MovieTitle, movie.MovieRating, movie.MovieGenre, user.UserName )
-                                         )
-                                         .ToList();
+                                                    MovieId = movie.Id,
+                                                    PlatformName = platform.PlatformName,
+                                                    MovieTitle = movie.Title,
+                                                    MovieRating = movie.Rating,
+                                                    MovieGenre = movie.Genre
+                                                })
+                                            .Join(context.Genres,
+                                                   movie => movie.MovieGenre.Id,
+                                                   genre => genre.Id,
+                                                   (movie, genre) => new
+                                                   {
+                                                       MovieId = movie.MovieId,
+                                                       PlatformName = movie.PlatformName,
+                                                       MovieTitle = movie.MovieTitle,
+                                                       MovieRating = movie.MovieRating,
+                                                       MovieGenre = genre.GenreName
+                                                   }
+                                                  )
+                                            .Join(context.Ratings,
+                                                  movie => movie.MovieRating.Id,
+                                                  rating => rating.Id,
+                                                  (movie, rating) => new
+                                                  {
+                                                      MovieId = movie.MovieId,
+                                                      PlatformName = movie.PlatformName,
+                                                      MovieTitle = movie.MovieTitle,
+                                                      MovieRating = rating.Id,
+                                                      MovieGenre = movie.MovieGenre,
+                                                  }
+                                            )
+                                            .Join(context.Users,
+                                                  movie => movie.MovieId,
+                                                  user => user.Id,
+                                                  (movie, user) => new ListViewObject(movie.MovieId, movie.PlatformName, movie.MovieTitle, movie.MovieRating, movie.MovieGenre, user.UserName)
+                                            )
+                                            .ToList();
 
-            Movies = movies;
+                    Movies = movies;
+                }
+            } catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+           
         }
 
     }

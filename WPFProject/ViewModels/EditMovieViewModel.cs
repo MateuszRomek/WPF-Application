@@ -138,7 +138,7 @@ namespace WPFProject.ViewModels
                 }
             } catch ( Exception e )
             {
-                throw new Exception(e.Message);
+                ErrorMessage = "An error occurred during the database operation. Please try in a moment.";
             }
         }
 
@@ -177,7 +177,7 @@ namespace WPFProject.ViewModels
 
             } catch (Exception e)
             {
-                throw new Exception(e.Message);
+                ErrorMessage = "An error occurred during the database operation. Please try in a moment.";
             }
         }
 

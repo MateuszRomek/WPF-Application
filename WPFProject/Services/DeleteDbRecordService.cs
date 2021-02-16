@@ -36,7 +36,7 @@ namespace WPFProject.Services
                 }
             } catch (Exception e)
             {
-                throw new Exception(e.Message);
+                return "An error occurred during the database operation. Please try in a moment.";
             }
         }
 
@@ -63,7 +63,7 @@ namespace WPFProject.Services
 
             } catch( Exception e)
             {
-                throw new Exception(e.Message);
+                return "An error occurred during the database operation. Please try in a moment.";
             }
         }
     }
