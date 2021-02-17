@@ -8,20 +8,20 @@
        Height="800" Width="1080"
       Title="DeleteMovie">
 
-    <Grid Background="#FFFF">
+    <Grid Background="#e8eaf6">
         <Grid.RowDefinitions >
             <RowDefinition Height="55" />
             <RowDefinition Height="25" />
             <RowDefinition Height="55"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Usuń film"   HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="10,10,10,10" FontWeight="Bold"/>
-        <TextBlock  Text="{Binding ErrorMessage}" Grid.Row="1" FontSize="16" Foreground="Red" TextAlignment="Center" HorizontalAlignment="Center" FontWeight="bold"/>
+        <TextBlock Grid.Row="0" Text="Usuń film"   HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="10,10,10,10" FontWeight="Bold"/>
+        <TextBlock  Text="{Binding ErrorMessage}" Grid.Row="1" FontSize="16" Foreground="Red" TextAlignment="Center" Margin="14,0,0,0" HorizontalAlignment="Left" FontWeight="bold"/>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="160" />
                 <ColumnDefinition Width="270" />
-                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
             <Label Content="Wpisz Tytuł filmu" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="10,10,10,10"/>
@@ -32,6 +32,7 @@
                       />
             <Button  Grid.Column="2" Margin="10,10,10,10" 
                     VerticalAlignment="Center" Padding="5,5,5,5" Height="32" Cursor="Hand"
+                     
                     Command="{Binding DeleteCommand}"
                     Content="{Binding ButtonContent}"
                     />

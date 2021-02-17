@@ -12,7 +12,7 @@ namespace WPFProject.ViewModels
         /// <summary>
         ///     Selected view that is currently displayed under navigation bar
         /// </summary>
-        public BaseViewModel SelectedViewModel { get; set; }
+        public BaseViewModel SelectedViewModel { get; set; } = new ListViewModel();
 
         /// <summary>
         ///     UpdateViewCommand to update view selected by the user. UpdateViewCommand implements ICommand

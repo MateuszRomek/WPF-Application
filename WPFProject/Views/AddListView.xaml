@@ -7,11 +7,15 @@
       Height="800" Width="1080"
       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:i1="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       Title="AddListView">
-    <Grid Background="#FFFF">
+
+    <Grid Background="#e8eaf6">
+        
+        
         <Grid.RowDefinitions >
             <RowDefinition Height="55" />
             <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
+            
         </Grid.RowDefinitions>
 
         <DataGrid>
@@ -22,7 +26,7 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <Grid Grid.Row="0" Background="White">
+        <Grid Grid.Row="0" Background="#e8eaf6">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="270" />
@@ -31,7 +35,7 @@
                 <ColumnDefinition Width="270" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="1" Grid.ColumnSpan="2" Height="55" Content="Dodaj Nowy Film" FontSize="24" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Grid.Column="1" Grid.ColumnSpan="2" Height="55" Content="Dodaj Nowy Film" FontSize="24" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
 
         </Grid>
 
@@ -66,7 +70,7 @@
                 <ColumnDefinition Width="270" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="1" Margin="0,10,10,0"  Content="Nazwa Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Grid.Row="0" Grid.Column="1" Margin="0,10,10,0"  Content="Nazwa Filmu" FontSize="16" FontWeight="Bold"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <TextBox Grid.Column="2"  
                      Name="movieName" 
                      Margin="0,10,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
@@ -74,7 +78,7 @@
                      >
             </TextBox>
 
-            <Label Grid.Row="1" Grid.Column="1" Margin="0,10,10,0"  Content="Gatunek Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Grid.Row="1" Grid.Column="1" Margin="0,10,10,0"  Content="Gatunek Filmu" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <ComboBox SelectedIndex="0"  
                       ItemsSource="{Binding GenresList}" Grid.Row="1" 
                       Grid.Column="2" FontSize="14"  Width="auto" Margin="0,10,0,0" 
@@ -83,7 +87,7 @@
             </ComboBox>
 
 
-            <Label Grid.Row="2" Grid.Column="1" Margin="0,10,10,0"  Content="Platformy VOD" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Grid.Row="2" Grid.Column="1" Margin="0,10,10,0"  Content="Platformy VOD" FontSize="16" FontWeight="Bold"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <ComboBox SelectedIndex="0"
                       ItemsSource="{Binding PlatformsList}" FontSize="14" Grid.Row="2" Grid.Column="2"
                       Width="auto" Margin="0,10,0,0" SelectedValue="{Binding MoviePlatform}" 
@@ -91,13 +95,13 @@
                
             </ComboBox>
 
-            <Label Grid.Row="3" Grid.Column="1" Margin="0,10,10,0"  Content="Ocena Filmu" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Grid.Row="3" Grid.Column="1" Margin="0,10,10,0"  Content="Ocena Filmu" FontSize="16" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <ComboBox SelectedIndex="3" FontSize="14" Grid.Row="3" Grid.Column="2" 
                       Width="auto" Margin="0,10,0,0" 
                       SelectedValue="{Binding UserRating}" ItemsSource="{Binding RatingList}" SelectedValuePath="Id" DisplayMemberPath="RatingName" >
             </ComboBox>
 
-            <Label Grid.Row="4" Grid.Column="1" Margin="0,10,10,0"  Content="Krótki Opis" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Label Grid.Row="4" Grid.Column="1" Margin="0,10,10,0"  Content="Krótki Opis" FontSize="16" FontWeight="Bold"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <TextBox Grid.Row="4" Grid.Column="2"  
                      Name="Description" 
                      Margin="0,10,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" 
@@ -108,7 +112,7 @@
             </TextBox>
 
             <Label Grid.Row="5" Grid.Column="1" Margin="0,10,10,0"  
-                   Content="Dodaj jako" FontSize="16" FontWeight="Bold" Background="LightSkyBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+                   Content="Dodaj jako" FontSize="16" FontWeight="Bold"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <ComboBox  FontSize="14" Grid.Row="5" Grid.Column="2" 
                       Width="auto" Margin="0,10,0,0" 
                       DisplayMemberPath="UserName"
@@ -124,7 +128,9 @@
                 Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,15,0,3" 
                 FontSize="16" Command="{Binding SubmitAction }"
                 IsEnabled="{Binding IsEnabled}"
+
                 />
+
         </Grid>
 
     </Grid>

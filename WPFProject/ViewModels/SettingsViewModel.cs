@@ -145,14 +145,15 @@ namespace WPFProject.ViewModels
             ResultHandler(result);
         }
 
-        private void ResultHandler(string result) 
+        private void ResultHandler(string result)
         {
-            if(!(result == "OK"))
+            NewUserName = "";
+            NewGenreName = "";
+            NewPlatformName = "";
+            if (!(result == "OK"))
             {
                 ErrorMessage = result;
-                NewUserName = "";
-                NewGenreName = "";
-                NewPlatformName = "";
+             
             } else
             {
                 ErrorMessage = "";

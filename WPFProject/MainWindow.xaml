@@ -12,27 +12,9 @@
 
 
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="#3f51b5" BorderThickness="0">
-                            <ContentPresenter x:Name="cp" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.Foreground="White"></ContentPresenter>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#757de8"></Setter>
-                                <Setter TargetName="cp" Property="TextBlock.Foreground" Value="White"></Setter>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#757de8"></Setter>
-                                <Setter TargetName="cp" Property="TextBlock.Foreground" Value="White"></Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+ 
+        
+
     </Window.Resources>
 
     <Grid>
@@ -46,7 +28,7 @@
             <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Edytuj Film" Command="{Binding UpdateViewCommand}" CommandParameter="EditMovie"/>
             <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Dodaj Film" Command="{Binding UpdateViewCommand}" CommandParameter="AddMovie"/>
             <Button Cursor="Hand" FontSize="14" Margin="10" Width="100" Content="Usuń Film" Command="{Binding UpdateViewCommand}" CommandParameter="DeleteMovie"/>
-            <Button Cursor="Hand" FontSize="14" Margin="10" Width="140" Content="Lista do obejrzenia" Command="{Binding UpdateViewCommand}" CommandParameter="Wishlist"/>
+            <Button Cursor="Hand" FontSize="14" Margin="10" Width="160" Content="Lista do obejrzenia" Command="{Binding UpdateViewCommand}" CommandParameter="Wishlist"/>
             <Button Cursor="Hand" HorizontalAlignment="Right" FontSize="14" Margin="10" Width="100" Content="Ustawienia" Command="{Binding UpdateViewCommand}" CommandParameter="Settings" RenderTransformOrigin="4.173,0.477"/>
         </DockPanel>
 

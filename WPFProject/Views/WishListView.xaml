@@ -9,10 +9,10 @@
       Height="800" Width="1080"
       Title="WishListView">
 
-    <Grid Background="#FFF">
+    <Grid Background="#e8eaf6">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="55" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -25,7 +25,7 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <TextBlock Grid.Row="0" Text="Zarządzaj listą do obejrzenia" FontSize="18" FontWeight="Bold" Margin="10,10,10,10" VerticalAlignment="Center" />
+        <TextBlock Grid.Row="0" Text="Zarządzaj listą do obejrzenia" FontSize="20" FontWeight="Bold" Margin="10,10,10,10" VerticalAlignment="Center" />
         <TextBlock Text="{Binding ErrorMessage}" Grid.Row="1" Foreground="red" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -47,26 +47,34 @@
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="{x:Type GridViewColumnHeader}">
                             <Setter Property="IsEnabled" Value="False"/>
-                            <Setter Property="TextElement.FontSize" Value="16" />
+                            <Setter Property="TextElement.FontSize" Value="20" />
                             <Setter Property="HorizontalContentAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5,3,3,3"/>
-                            <Setter Property="Margin" Value="0,10,0,0"/>
-                          
+                            <Setter Property="Padding" Value="10,3,3,3"/>
+                            <Setter Property="Margin" Value="-1,10,0,0"/>
+                            <Setter Property="Background" Value="#c5cae9"/>
+                            <Setter Property="BorderBrush" Value="#c5cae9"/>
                             <Style.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter Property="TextElement.Foreground" Value="Black"/>
                                 </Trigger>
                             </Style.Triggers>
-
-
-
                         </Style>
-
                     </GridView.ColumnHeaderContainerStyle>
                     <GridViewColumn  Header="Tytuł Filmu" Width="1080"/>
                 </GridView>
+            
             </ListView.View>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Padding" Value="10,0,0,0"/>
+                    <Setter Property="Height" Value="28"/>
+                    <Setter Property="FontSize" Value="14" ></Setter>
+                    <Setter Property="Foreground" Value="#272727" ></Setter>
+
+
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
 
     </Grid>

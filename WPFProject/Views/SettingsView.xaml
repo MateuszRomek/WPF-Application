@@ -8,7 +8,7 @@
       Height="800" Width="1080"
       Title="SettingsView">
 
-    <Grid Background="#FFFF">
+    <Grid Background="#e8eaf6">
         <Grid.RowDefinitions >
             <RowDefinition Height="55" />
             <RowDefinition Height="35" />
@@ -17,9 +17,9 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Label 
-            Margin="20,0,0,0"
-            Content="Zarządzaj ustawieniami" FontSize="24" 
+        <TextBlock 
+            Margin="10,0,0,0"
+            Text="Zarządzaj ustawieniami" FontSize="20" 
             VerticalAlignment="Center" FontWeight="Bold"  />
 
         <TextBlock Grid.Row="1" Foreground="Red" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"  VerticalAlignment="Center" Text="{Binding ErrorMessage}"/>
@@ -37,8 +37,8 @@
             <TextBox   Grid.Column="1"  VerticalAlignment="Center"  Height="30" TextAlignment="Left" VerticalContentAlignment="Center" 
                        Text="{Binding NewUserName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"
                        />
-            <Button Content="Dodaj Użytkownika" IsEnabled="{Binding IsUserNameEnabled}" 
-                    Command="{Binding AddUser }" FontSize="18" Grid.Column="2" VerticalAlignment="Center"  Width="155" Padding="5,5,5,5" Cursor="Hand"/>
+            <Button Content="Dodaj Użytkownika" IsEnabled="{Binding IsUserNameEnabled}"  
+                    Command="{Binding AddUser }" FontSize="18" Grid.Column="2" VerticalAlignment="Center"  Width="155" Padding="5,5,5,5" Cursor="Hand" Height="30"/>
         </Grid>
 
         <Grid Grid.Row="3" >
@@ -55,7 +55,7 @@
                        Text="{Binding NewGenreName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"
                        />
             <Button Content="Dodaj Gatunek" IsEnabled="{Binding IsGenreNameEnabled}" Command="{Binding AddGenre }" 
-                    FontSize="18" Grid.Column="2" VerticalAlignment="Center"  Width="155" Padding="5,5,5,5" Cursor="Hand"/>
+                    FontSize="18" Grid.Column="2" VerticalAlignment="Center"  Width="155" Padding="5,5,5,5" Cursor="Hand" Height="30"/>
         </Grid>
 
         <Grid Grid.Row="4" >
@@ -71,7 +71,7 @@
             <TextBox Grid.Column="1"  VerticalAlignment="Center"  Height="30" TextAlignment="Left" VerticalContentAlignment="Center" 
                      Text="{Binding NewPlatformName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"
                      />
-            <Button Content="Dodaj Platformę" IsEnabled="{Binding IsPlatformNameEnabled}" 
+            <Button Content="Dodaj Platformę" IsEnabled="{Binding IsPlatformNameEnabled}"  Height="30"
                     Command="{Binding AddPlatform}"
                     FontSize="18" Grid.Column="2" VerticalAlignment="Center"  Width="155" Padding="5,5,5,5" Cursor="Hand"/>
         </Grid>

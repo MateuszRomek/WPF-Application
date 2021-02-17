@@ -10,7 +10,7 @@
       Title="ListView">
 
 
-    <Grid>
+    <Grid Background="#e8eaf6">
 
         <DataGrid>
             <i:Interaction.Triggers>
@@ -20,7 +20,7 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <ListView ItemsSource="{Binding Movies}">
+        <ListView ItemsSource="{Binding Movies}" Background="#e8eaf6">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -30,14 +30,14 @@
                             <Setter Property="HorizontalContentAlignment" Value="Left" />
                             <Setter Property="VerticalAlignment" Value="Center" />
                             <Setter Property="Padding" Value="5,3,3,3"/>
+                            <Setter Property="Margin" Value="-2,0,0,0"/>
+                            <Setter Property="Background" Value="#c5cae9"/>
+                            <Setter Property="BorderBrush" Value="#c5cae9"/>
                             <Style.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter Property="TextElement.Foreground" Value="Black"/>
                                 </Trigger>
                             </Style.Triggers>
-                            
-                            
-                            
                         </Style>
 
                     </GridView.ColumnHeaderContainerStyle>
@@ -48,6 +48,15 @@
                     <GridViewColumn Header="Dodany przez" Width="216" DisplayMemberBinding="{Binding CreatedBy}" />
                 </GridView>
             </ListView.View>
+             <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Height" Value="28"/>
+                    <Setter Property="FontSize" Value="14" ></Setter>
+                    <Setter Property="Foreground" Value="#272727" ></Setter>
+
+
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
 
 
