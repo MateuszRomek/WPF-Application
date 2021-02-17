@@ -116,6 +116,9 @@ namespace WPFProject.Services
 
                     var movieExist = context.Movies.Any(m => m.Title.ToLower().Trim() == title.ToLower().Trim());
 
+                    DeleteDbRecordService.DeleteWishlistItem(title);
+
+
                     if (!movieExist)
                     {
                         var genre = context.Genres
