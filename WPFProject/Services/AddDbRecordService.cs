@@ -34,7 +34,7 @@ namespace WPFProject.Services
                         return "Użytkownik o takiej nazwie już istnieje";
                     }
                 }
-            } catch (Exception e)
+            } catch (Exception )
             {
                 return  "An error occurred during the database operation. Please try in a moment.";
             }
@@ -65,7 +65,7 @@ namespace WPFProject.Services
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 return  "An error occurred during the database operation. Please try in a moment.";
             }
@@ -96,7 +96,7 @@ namespace WPFProject.Services
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception )
             {
                 return  "An error occurred during the database operation. Please try in a moment.";
             }
@@ -163,7 +163,7 @@ namespace WPFProject.Services
 
 
 
-            } catch(Exception e)
+            } catch(Exception)
             {
                 return  "An error occurred during the database operation. Please try in a moment.";
             }
@@ -192,7 +192,7 @@ namespace WPFProject.Services
                     context.SaveChanges();
                     return "OK";
                 }
-            } catch (Exception e)
+            } catch (Exception )
             {
                 return  "An error occurred during the database operation. Please try in a moment.";
             }
