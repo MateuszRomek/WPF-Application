@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFProject.Views"
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:i1="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
       Height="800" Width="1080"
       mc:Ignorable="d" 
       Title="EditListView">
@@ -16,24 +18,43 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0"  Text="Edytuj film" VerticalAlignment="Center" FontSize="16" FontWeight="bold" Margin="10,10,10,10"/>
-        <TextBlock Grid.Row="1"  Text="{Binding ErrorMessage}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" FontSize="16" FontWeight="bold" Margin="10,10,10,10"/>
+        <TextBlock Grid.Row="0"  Text="Edytuj film" VerticalAlignment="Center" FontSize="20" FontWeight="bold" Margin="10,10,10,10"/>
+        <TextBlock  Grid.Row="1"  Text="{Binding ErrorMessage}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Red" FontSize="15" Height="25" FontWeight="bold" Margin="10,10,10,10"/>
        
+        <DataGrid Grid.Row="0" Height="0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding LoadData}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
                 <ColumnDefinition Width="270" />
                 <ColumnDefinition Width="270" />
-                <ColumnDefinition Width="270" />
-                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="240" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Content="Wyszukaj film po tytule"
+            <TextBlock TextWrapping="Wrap" Grid.Column="0" Text="Wyszukaj film po tytule oraz wybierz użytkownika, który dodał film"
                    VerticalAlignment="Center"
                    FontSize="16"
                    HorizontalAlignment="Center"
+                       
                    />
+            
             <TextBox Text="{Binding SearchMovieTitle}" Grid.Column="1" VerticalContentAlignment="Center"  VerticalAlignment="Center" FontSize="16"  Height="30"/>
-            <Button Content="Wyszukaj" VerticalAlignment="Center"  FontSize="16" Height="30" Grid.Column="2" Width="120" Command="{Binding SearchAction}"/>
+            <ComboBox Grid.Column="2"  FontSize="14"
+                      Width="auto" 
+                      DisplayMemberPath="UserName"
+                      SelectedIndex="0"
+                      VerticalAlignment="Center"
+                      Height="30"
+                      Margin="10,0,10,0"
+                      SelectedValue="{Binding User}"
+                      ItemsSource="{Binding AvaliableUsers}" SelectedValuePath="Id" />
+
+            <Button Content="Wyszukaj" VerticalAlignment="Center"  FontSize="16" Height="30" Grid.Column="3" Width="120" Command="{Binding SearchAction}"/>
         </Grid>
 
         <Grid Grid.Row="3" Visibility="{Binding VisibleForm}">

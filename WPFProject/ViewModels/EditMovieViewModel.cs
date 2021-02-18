@@ -21,6 +21,11 @@ namespace WPFProject.ViewModels
         public string  SearchMovieTitle {get;set;}
 
         /// <summary>
+        /// User that added movie. This value is set by default (in View) to Anonymous user
+        /// </summary>
+        public int User { get; set; }
+
+        /// <summary>
         /// A description of the selected movie that is currently saved in the database. This filed can be modified by the user
         /// </summary>
         public string Description { get; set; }
@@ -79,6 +84,12 @@ namespace WPFProject.ViewModels
         /// List of current VOD platforms extracted from the database
         /// </summary>
         public List<DB.Models.Platform> PlatformsList { get; set; }
+
+        /// <summary>
+        /// This list represents the Users that are defined in the database. It is filled when the view loads.
+        /// </summary>
+        public List<DB.Models.User> AvaliableUsers { get; set; }
+
         #endregion
 
         #region Commands
@@ -90,6 +101,11 @@ namespace WPFProject.ViewModels
         /// The Command that is performed after the user presses the Search button 
         /// </summary>
         public ICommand SearchAction { get; set; }
+
+        /// <summary>
+        /// Action that is executed when ViewModel is loaded
+        /// </summary>
+        public ICommand LoadData { get; set; }
         #endregion
 
         /// <summary>
@@ -100,6 +116,7 @@ namespace WPFProject.ViewModels
             this.SaveAction = new RelayCommand(UpdateRecord);
             this.SearchAction = new RelayCommand(FindMovie);
             this.VisibleForm = FormVisibility.Hidden.ToString();
+            this.LoadData = new RelayCommand(LoadEditMovieData);
         }
 
 
@@ -112,10 +129,10 @@ namespace WPFProject.ViewModels
                 {
                     var movie = context.Movies
                         .Include("Rating")
-                        .FirstOrDefault(m => m.Title.ToLower().Trim() == SearchMovieTitle.Trim().ToLower());
+                        .FirstOrDefault(m => m.Title.ToLower().Trim() == SearchMovieTitle.Trim().ToLower() && m.User.Id == User);
                     if (movie == null)
                     {
-                        ErrorMessage = "Nie ma takiego filmu na Twojej liście";
+                        ErrorMessage = "Wybrany użytkownik nie posiada filmu o takim tytule";
                         VisibleForm = FormVisibility.Hidden.ToString();
                         return;
                     }
@@ -136,7 +153,7 @@ namespace WPFProject.ViewModels
                     SelectedMovieRating = movie.Rating.Id - 1;
                     VisibleForm = FormVisibility.Visible.ToString();
                 }
-            } catch ( Exception e )
+            } catch ( Exception )
             {
                 ErrorMessage = "An error occurred during the database operation. Please try in a moment.";
             }
@@ -149,8 +166,12 @@ namespace WPFProject.ViewModels
 
                 using(var context = new MovieCatalogContext())
                 {
-                    var movie = context.Movies.SingleOrDefault(m => m.Title.ToLower().Trim() == SearchMovieTitle.ToLower().Trim());
-
+                    var movieExist = context.Movies.Any(m => m.Title.ToLower().Trim() == SearchMovieTitle.ToLower().Trim() && m.User.Id == User);
+                    if(!movieExist)
+                    {
+                        ErrorMessage = "Wybrany użytkownik nie dodał takiego filmu";
+                    }
+                    var movie = context.Movies.SingleOrDefault(m => m.Title.ToLower().Trim() == SearchMovieTitle.ToLower().Trim() && m.User.Id == User);
 
                     var genre = context.Genres
                                 .Where(g => g.Id == MovieGenre)
@@ -175,9 +196,27 @@ namespace WPFProject.ViewModels
                     VisibleForm = FormVisibility.Hidden.ToString();
                 }
 
-            } catch (Exception e)
+            } catch (Exception )
             {
                 ErrorMessage = "An error occurred during the database operation. Please try in a moment.";
+            }
+        }
+
+        private void LoadEditMovieData()
+        {
+            try
+            {
+                using (var context = new MovieCatalogContext())
+                {
+
+                    var users = context.Users.ToList();
+                    AvaliableUsers = users;
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
 
