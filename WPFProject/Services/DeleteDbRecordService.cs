@@ -14,22 +14,22 @@ namespace WPFProject.Services
         /// </summary>
         /// <param name="movieTitle"></param>
         /// <returns></returns>
-        public static string DeleteMovie (string movieTitle)
+        public static string DeleteMovie (string movieTitle, int userId)
         {
             try
             {
                 using (var context = new MovieCatalogContext())
                 {
 
-                    var movie = context.Movies
-                        .SingleOrDefault(m => m.Title.ToLower().Trim() == movieTitle.ToLower().Trim());
+                
+                    var movie = context.Movies.Where(m => m.Title.ToLower().Trim() == movieTitle.ToLower().Trim()).Where(w => w.User.Id == userId).ToList();
 
-                    if(movie == null)
+                    if (movie.Count == 0)
                     {
-                        return "Nie ma takiego filmu";
+                        return "Wybrany użytkownik nie ma takiego filmu";
                     }
 
-                    context.Movies.Remove(movie);
+                    context.Movies.Remove(movie[0]);
                     context.SaveChanges();
                     return "OK";
 
@@ -45,16 +45,16 @@ namespace WPFProject.Services
         /// </summary>
         /// <param name="movieTitle"></param>
         /// <returns></returns>
-        public static string DeleteWishlistItem(string movieTitle)
+        public static string DeleteWishlistItem(string movieTitle, int userId)
         {
             try
             {
                 using(var context = new MovieCatalogContext())
                 {
-                    var wishlistMovieExist = context.Wishlist.Any(w => w.MovieTitle.ToLower().Trim() == movieTitle.Trim().ToLower());
-                    if (!wishlistMovieExist) return "Nie masz takiego filmu na liście \"Do obejrzenia \"";
+                    var wishlistMovieExist = context.Wishlist.Where(w => w.MovieTitle.ToLower().Trim() == movieTitle.Trim().ToLower()).Where(w => w.User.Id == userId).ToList();
+                    if (wishlistMovieExist.Count == 0) return "Wybrany użytkownik nie ma takiego filmu na liście \"Do obejrzenia \"";
 
-                    var wishlistItem = context.Wishlist.SingleOrDefault(w => w.MovieTitle.ToLower().Trim() == movieTitle.ToLower().Trim());
+                    var wishlistItem = context.Wishlist.SingleOrDefault(w => w.MovieTitle.ToLower().Trim() == movieTitle.ToLower().Trim() && w.User.Id == userId);
                     context.Wishlist.Remove(wishlistItem);
                     context.SaveChanges();
                     return "OK";

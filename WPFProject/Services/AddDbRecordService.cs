@@ -114,9 +114,9 @@ namespace WPFProject.Services
                 using(var context = new MovieCatalogContext())
                 {
 
-                    var movieExist = context.Movies.Any(m => m.Title.ToLower().Trim() == title.ToLower().Trim());
+                    var movieExist = context.Movies.Any(m => m.Title.ToLower().Trim() == title.ToLower().Trim() && m.User.Id == userId);
 
-                    DeleteDbRecordService.DeleteWishlistItem(title);
+                    DeleteDbRecordService.DeleteWishlistItem(title, userId);
 
 
                     if (!movieExist)
@@ -174,18 +174,22 @@ namespace WPFProject.Services
         /// If it exists, it returns a string. If not, it creates a record in the database and returns OK information of the string type.
         /// </summary>
         /// <returns></returns>
-        public static string AddMovieToWishlist (string movieTitle)
+        public static string AddMovieToWishlist (string movieTitle, int userId)
         {
             try
             {
                 using (var context = new MovieCatalogContext())
                 {
                     var movieExist = context.Wishlist.Any(w => w.MovieTitle.ToLower().Trim() == movieTitle.ToLower().Trim());
-                    if (movieExist) return "Film o takim tytule znajduje się już na Twojej liście do obejrzenia";
+                    if (movieExist) return "Film o takim tytule znajduje się już na liście do obejrzenia wybranego użytkownika";
+
+
+                    var user = context.Users.SingleOrDefault(u => u.Id == userId);
 
                     var wishlist = new Wishlist()
                     {
-                        MovieTitle = movieTitle
+                        MovieTitle = movieTitle,
+                        User = user
                     };
 
                     context.Wishlist.Add(wishlist);

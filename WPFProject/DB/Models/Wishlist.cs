@@ -8,5 +8,7 @@ namespace WPFProject.DB.Models
     {
         public int Id { get; set; }
         public string MovieTitle { get; set; }
+
+        public User User { get; set; }
     }
 }

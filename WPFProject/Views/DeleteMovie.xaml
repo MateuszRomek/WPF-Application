@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WPFProject.Views"
+     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:i1="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+
       mc:Ignorable="d" 
        Height="800" Width="1080"
       Title="DeleteMovie">
@@ -19,18 +21,30 @@
         <TextBlock  Text="{Binding ErrorMessage}" Grid.Row="1" FontSize="16" Foreground="Red" TextAlignment="Center" Margin="14,0,0,0" HorizontalAlignment="Left" FontWeight="bold"/>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="160" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="270" />
                 <ColumnDefinition Width="270" />
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="Wpisz Tytuł filmu" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="10,10,10,10"/>
+            <TextBlock TextWrapping="Wrap" Text="Wpisz Tytuł filmu oraz użytkownika, który ten film dodał" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" Margin="10,10,10,10"/>
 
             <TextBox  Grid.Column="1" FontSize="14"   VerticalAlignment="Center"  
                       Height="32" VerticalContentAlignment="Center" 
                       Text="{ Binding DeleteMovieTitle }"
                       />
-            <Button  Grid.Column="2" Margin="10,10,10,10" 
+
+            <ComboBox Grid.Column="2"  FontSize="14"
+                      Width="auto" 
+                      DisplayMemberPath="UserName"
+                      SelectedIndex="0"
+                      VerticalAlignment="Center"
+                      Height="30"
+                      Margin="10,0,10,0"
+                      SelectedValue="{Binding User}"
+                      ItemsSource="{Binding AvaliableUsers}" SelectedValuePath="Id" />
+
+            <Button  Grid.Column="3" Margin="10,10,10,10" 
                     VerticalAlignment="Center" Padding="5,5,5,5" Height="32" Cursor="Hand"
                      
                     Command="{Binding DeleteCommand}"
@@ -38,5 +52,12 @@
                     />
         </Grid>
 
+        <DataGrid Grid.Row="0" Height="0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding LoadData}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </DataGrid>
     </Grid>
 </Page>

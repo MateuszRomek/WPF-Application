@@ -10,14 +10,21 @@
       Title="WishListView">
 
     <Grid Background="#e8eaf6">
+
+
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="20" />
-            <RowDefinition Height="55" />
+            <RowDefinition Height="75" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <DataGrid Height="0">
+
+
+        <TextBlock Grid.Row="0" Text="Zarządzaj listą do obejrzenia" FontSize="20" FontWeight="Bold" Margin="10,10,10,10" VerticalAlignment="Center" />
+        <TextBlock Text="{Binding ErrorMessage}" Grid.Row="1" Foreground="red" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <DataGrid Grid.Row="0" Height="0">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
                     <i:InvokeCommandAction Command="{Binding LoadData}" />
@@ -25,20 +32,31 @@
             </i:Interaction.Triggers>
         </DataGrid>
 
-        <TextBlock Grid.Row="0" Text="Zarządzaj listą do obejrzenia" FontSize="20" FontWeight="Bold" Margin="10,10,10,10" VerticalAlignment="Center" />
-        <TextBlock Text="{Binding ErrorMessage}" Grid.Row="1" Foreground="red" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="270" />
-                <ColumnDefinition Width="270" />
-                <ColumnDefinition Width="270" />
-                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="216" />
+                <ColumnDefinition Width="216" />
+                <ColumnDefinition Width="216" />
+                <ColumnDefinition Width="216" />
+                <ColumnDefinition Width="216" />
             </Grid.ColumnDefinitions>
 
-            <Label FontSize="16" Content="Wpisz tytuł filmu z Twojej listy" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Text="{Binding MovieTitle}" VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center"/>
-            <Button Grid.Column="2" Content="Dodaj" FontSize="16" VerticalAlignment="Center" Width="100" Cursor="Hand" Height="30" Command="{Binding AddAction}" />
-            <Button Grid.Column="3" Content="Usuń" FontSize="16" VerticalAlignment="Center" Width="100" Cursor="Hand" Height="30" Command="{Binding DeleteAction}" />
+            <TextBlock FontSize="15" Text="Wpisz tytuł filmu z Twojej listy oraz wybierz użytkownika, który chce oglądnąć ten film" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"  />
+            <TextBox  Margin="10,0,10,0" Grid.Column="1" 
+                      VerticalAlignment="Center" Height="30" VerticalContentAlignment="Center"
+                      Text="{Binding MovieTitle, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True, ValidatesOnExceptions=True, ValidatesOnNotifyDataErrors=True}"
+                      />
+            <ComboBox Grid.Column="2"  FontSize="14"
+                      Width="auto" 
+                      DisplayMemberPath="UserName"
+                      SelectedIndex="0"
+                      VerticalAlignment="Center"
+                      Height="30"
+                      Margin="10,0,10,0"
+                      SelectedValue="{Binding User}"
+                      ItemsSource="{Binding AvaliableUsers}" SelectedValuePath="Id" />
+            <Button Grid.Column="3" Content="Dodaj" FontSize="16" VerticalAlignment="Center" Width="100" Cursor="Hand" Height="30" Command="{Binding AddAction}" IsEnabled="{Binding IsEnabled}"/>
+            <Button Grid.Column="4" Content="Usuń" FontSize="16" VerticalAlignment="Center" Width="100" Cursor="Hand" Height="30" Command="{Binding DeleteAction}" />
         </Grid>
 
         <ListView Grid.Row="4" ItemsSource="{Binding Wishlist}" Background="Transparent" BorderThickness="0" AlternationCount="500">
@@ -61,9 +79,10 @@
                             </Style.Triggers>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn  Header="Tytuł Filmu" Width="1080"/>
+                    <GridViewColumn  Header="Tytuł Filmu" Width="300" DisplayMemberBinding="{Binding MovieTitle}"/>
+                    <GridViewColumn  Header="Użytkownik" Width="780"  DisplayMemberBinding="{Binding UserName}"/>
                 </GridView>
-            
+
             </ListView.View>
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
